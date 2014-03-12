@@ -15,7 +15,11 @@ class DocumentFileTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.document_file',
 		'app.document',
-		'app.document_translation'
+		'app.user',
+		'app.user_group',
+		'app.document_translation',
+		'app.locale',
+		'app.category'
 	);
 
 /**

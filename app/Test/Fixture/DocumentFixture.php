@@ -16,10 +16,10 @@ class DocumentFixture extends CakeTestFixture {
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'locale_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'category_id' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 100, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'summary' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'body' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'is_login_required' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 100, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'summary' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'body' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'is_login_required' => array('type' => 'boolean', 'null' => true, 'default' => null),
 		'created' => array('type' => 'timestamp', 'null' => false, 'default' => 'CURRENT_TIMESTAMP'),
 		'modified' => array('type' => 'timestamp', 'null' => true, 'default' => null),
 		'deleted' => array('type' => 'timestamp', 'null' => true, 'default' => null),
@@ -41,13 +41,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 1,
 			'locale_id' => 1,
 			'category_id' => 1,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 2,
@@ -55,13 +55,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 2,
 			'locale_id' => 2,
 			'category_id' => 2,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 3,
@@ -69,13 +69,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 3,
 			'locale_id' => 3,
 			'category_id' => 3,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 4,
@@ -83,13 +83,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 4,
 			'locale_id' => 4,
 			'category_id' => 4,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 5,
@@ -97,13 +97,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 5,
 			'locale_id' => 5,
 			'category_id' => 5,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 6,
@@ -111,13 +111,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 6,
 			'locale_id' => 6,
 			'category_id' => 6,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 7,
@@ -125,13 +125,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 7,
 			'locale_id' => 7,
 			'category_id' => 7,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 8,
@@ -139,13 +139,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 8,
 			'locale_id' => 8,
 			'category_id' => 8,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 9,
@@ -153,13 +153,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 9,
 			'locale_id' => 9,
 			'category_id' => 9,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 10,
@@ -167,13 +167,13 @@ class DocumentFixture extends CakeTestFixture {
 			'user_id' => 10,
 			'locale_id' => 10,
 			'category_id' => 10,
-			'title' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'is_login_required' => 1,
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 	);
 

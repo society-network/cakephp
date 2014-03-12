@@ -33,81 +33,81 @@ class LocaleFixture extends CakeTestFixture {
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 2,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 3,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 4,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 5,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 6,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 7,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 8,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 9,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 		array(
 			'id' => 10,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'code' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394688186,
-			'modified' => 1394688186,
-			'deleted' => 1394688186
+			'created' => 1394658746,
+			'modified' => 1394658746,
+			'deleted' => 1394658746
 		),
 	);
 

@@ -1,285 +1,177 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+-- phpMyAdmin SQL Dump
+-- version 3.4.11.1deb2
+-- http://www.phpmyadmin.net
+--
+-- 主机: localhost
+-- 生成日期: 2014 年 03 月 13 日 08:10
+-- 服务器版本: 5.5.31
+-- PHP 版本: 5.4.4-14+deb7u5
 
-CREATE SCHEMA IF NOT EXISTS `uiproperties` DEFAULT CHARACTER SET utf8 ;
-USE `uiproperties` ;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
--- -----------------------------------------------------
--- Table `uiproperties`.`user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`user` ;
+--
+-- 数据库: `uiproperties`
+--
+CREATE DATABASE `uiproperties` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `uiproperties`;
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `user_group_id` INT NOT NULL ,
-  `email` VARCHAR(45) NOT NULL ,
-  `password` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL ,
-  `modified` TIMESTAMP NULL ,
-  `deleted` TIMESTAMP NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- 表的结构 `categories`
+--
 
--- -----------------------------------------------------
--- Table `uiproperties`.`category`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`category` ;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`category` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(11) NOT NULL ,
-  `name` VARCHAR(100) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 转存表中的数据 `categories`
+--
 
+INSERT INTO `categories` (`id`, `parent_id`, `name`, `created`, `modified`, `deleted`) VALUES
+(1, NULL, 'all', '2014-03-12 20:11:52', NULL, NULL);
 
--- -----------------------------------------------------
--- Table `uiproperties`.`document`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`document` ;
+-- --------------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`document` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(11) NULL DEFAULT NULL ,
-  `user_id` INT(11) NOT NULL ,
-  `locale_id` INT(11) NOT NULL ,
-  `category_id` INT(11) NULL DEFAULT NULL ,
-  `title` VARCHAR(100) NOT NULL ,
-  `summary` TEXT NOT NULL ,
-  `body` TEXT NOT NULL ,
-  `is_login_required` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 表的结构 `document_files`
+--
 
+CREATE TABLE IF NOT EXISTS `document_files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document_id` int(11) DEFAULT NULL,
+  `document_translation_id` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `path` varchar(100) NOT NULL,
+  `is_a_link` tinyint(1) NOT NULL DEFAULT '0',
+  `is_login_required` tinyint(1) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- -----------------------------------------------------
--- Table `uiproperties`.`document_translation`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`document_translation` ;
+-- --------------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`document_translation` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `document_id` INT(11) NOT NULL ,
-  `locale_id` INT(11) NOT NULL ,
-  `user_id` INT(11) NOT NULL ,
-  `title` VARCHAR(100) NOT NULL ,
-  `summary` TEXT NOT NULL ,
-  `body` TEXT NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 表的结构 `document_translations`
+--
 
+CREATE TABLE IF NOT EXISTS `document_translations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document_id` int(11) NOT NULL,
+  `locale_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `summary` text,
+  `body` text,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- -----------------------------------------------------
--- Table `uiproperties`.`file`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`file` ;
+-- --------------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`file` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `document_id` INT(11) NULL DEFAULT NULL ,
-  `document_translation_id` INT(11) NULL DEFAULT NULL ,
-  `name` VARCHAR(100) NOT NULL ,
-  `type` VARCHAR(45) NOT NULL ,
-  `path` VARCHAR(100) NOT NULL ,
-  `is_a_link` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `is_login_required` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 表的结构 `documents`
+--
 
+CREATE TABLE IF NOT EXISTS `documents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `locale_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `summary` text,
+  `body` text,
+  `is_login_required` tinyint(1) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- -----------------------------------------------------
--- Table `uiproperties`.`locale`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`locale` ;
+-- --------------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`locale` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  `code` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 表的结构 `locales`
+--
 
+CREATE TABLE IF NOT EXISTS `locales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `code` varchar(45) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
--- -----------------------------------------------------
--- Table `uiproperties`.`user_group`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`user_group` ;
+--
+-- 转存表中的数据 `locales`
+--
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`user_group` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+INSERT INTO `locales` (`id`, `name`, `code`, `created`, `modified`, `deleted`) VALUES
+(1, 'English Australia', 'en-AU', '2014-03-12 20:13:04', NULL, NULL),
+(2, 'Traditional Chinese', 'zh-TW', '2014-03-12 20:13:04', NULL, NULL);
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `uiproperties`.`categories`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`categories` ;
+--
+-- 表的结构 `user_groups`
+--
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`categories` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(11) NULL DEFAULT NULL ,
-  `name` VARCHAR(100) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8;
+CREATE TABLE IF NOT EXISTS `user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- 转存表中的数据 `user_groups`
+--
 
--- -----------------------------------------------------
--- Table `uiproperties`.`document_files`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`document_files` ;
+INSERT INTO `user_groups` (`id`, `parent_id`, `name`, `created`, `modified`, `deleted`) VALUES
+(1, NULL, 'administrator', '2014-03-12 20:14:09', NULL, NULL),
+(2, NULL, 'normal user', '2014-03-12 20:14:09', NULL, NULL);
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`document_files` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `document_id` INT(11) NULL DEFAULT NULL ,
-  `document_translation_id` INT(11) NULL DEFAULT NULL ,
-  `name` VARCHAR(100) NOT NULL ,
-  `type` VARCHAR(45) NOT NULL ,
-  `path` VARCHAR(100) NOT NULL ,
-  `is_a_link` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `is_login_required` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+-- --------------------------------------------------------
 
+--
+-- 表的结构 `users`
+--
 
--- -----------------------------------------------------
--- Table `uiproperties`.`document_translations`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`document_translations` ;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_group_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`document_translations` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `document_id` INT(11) NOT NULL ,
-  `locale_id` INT(11) NOT NULL ,
-  `user_id` INT(11) NOT NULL ,
-  `title` VARCHAR(100) NOT NULL ,
-  `summary` TEXT NOT NULL ,
-  `body` TEXT NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+--
+-- 转存表中的数据 `users`
+--
 
-
--- -----------------------------------------------------
--- Table `uiproperties`.`documents`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`documents` ;
-
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`documents` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(11) NULL DEFAULT NULL ,
-  `user_id` INT(11) NOT NULL ,
-  `locale_id` INT(11) NOT NULL ,
-  `category_id` INT(11) NULL DEFAULT NULL ,
-  `title` VARCHAR(100) NOT NULL ,
-  `summary` TEXT NOT NULL ,
-  `body` TEXT NOT NULL ,
-  `is_login_required` TINYINT(1) NOT NULL DEFAULT '0' ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `uiproperties`.`locales`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`locales` ;
-
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`locales` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  `code` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `uiproperties`.`user_groups`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`user_groups` ;
-
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`user_groups` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(11) NULL DEFAULT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `uiproperties`.`users`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uiproperties`.`users` ;
-
-CREATE  TABLE IF NOT EXISTS `uiproperties`.`users` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `user_group_id` INT(11) NOT NULL ,
-  `email` VARCHAR(100) NOT NULL ,
-  `password` VARCHAR(100) NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified` TIMESTAMP NULL DEFAULT NULL ,
-  `deleted` TIMESTAMP NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+INSERT INTO `users` (`id`, `user_group_id`, `name`, `password`, `email`, `created`, `modified`, `deleted`) VALUES
+(1, 1, 'admin', '', 'admin@uiproperties.com.au', '2014-03-12 20:15:06', NULL, NULL);

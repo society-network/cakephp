@@ -14,7 +14,12 @@ class UserGroupTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.user_group',
-		'app.user'
+		'app.user',
+		'app.document_translation',
+		'app.document',
+		'app.locale',
+		'app.category',
+		'app.document_file'
 	);
 
 /**

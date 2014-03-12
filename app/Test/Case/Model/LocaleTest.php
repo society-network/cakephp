@@ -17,6 +17,7 @@ class LocaleTest extends CakeTestCase {
 		'app.document_translation',
 		'app.document',
 		'app.user',
+		'app.user_group',
 		'app.category',
 		'app.document_file'
 	);

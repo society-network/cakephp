@@ -20,10 +20,10 @@
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
-		
+
 		<div class="actions">
-			
-			<ul class="list-group">			
+
+			<ul class="list-group">
 				<?php
 					echo "\t\t<li class=\"list-group-item\"><?php echo \$this->Html->link(__('Edit " . $singularHumanName ."'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('class' => '')); ?> </li>\n";
 					echo "\t\t<li class=\"list-group-item\"><?php echo \$this->Form->postLink(__('Delete " . $singularHumanName . "'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('class' => ''), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?> </li>\n";
@@ -40,11 +40,11 @@
 							}
 						}
 					}
-				?>				
+				?>
 			</ul><!-- /.list-group -->
-			
+
 		</div><!-- /.actions -->
-		
+
 	</div><!-- /#sidebar .span3 -->
 	
 	<div id="page-content" class="col-sm-9">

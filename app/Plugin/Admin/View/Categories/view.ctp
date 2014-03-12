@@ -2,10 +2,10 @@
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
-		
+
 		<div class="actions">
-			
-			<ul class="list-group">			
+
+			<ul class="list-group">
 						<li class="list-group-item"><?php echo $this->Html->link(__('Edit Category'), array('action' => 'edit', $category['Category']['id']), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete Category'), array('action' => 'delete', $category['Category']['id']), array('class' => ''), __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Categories'), array('action' => 'index'), array('class' => '')); ?> </li>
@@ -14,11 +14,10 @@
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Parent Category'), array('controller' => 'categories', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?> </li>
-				
 			</ul><!-- /.list-group -->
-			
+
 		</div><!-- /.actions -->
-		
+
 	</div><!-- /#sidebar .span3 -->
 	
 	<div id="page-content" class="col-sm-9">

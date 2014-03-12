@@ -1,7 +1,31 @@
 
-<div id="page-container">
+<div id="page-container" class="row">
+
+	<div id="sidebar" class="col-sm-3">
+
+		<div class="actions">
+
+			<ul class="list-group">
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('action' => 'add'), array('class' => '')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Parent Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('controller' => 'locales', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('controller' => 'locales', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Document File'), array('controller' => 'document_files', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add'), array('class' => '')); ?></li> 
+			</ul><!-- /.list-group -->
+
+		</div><!-- /.actions -->
+
+	</div><!-- /#sidebar .col-sm-3 -->
 	
-	<div id="page-content">
+	<div id="page-content" class="col-sm-9">
 
 		<div class="documents index">
 		

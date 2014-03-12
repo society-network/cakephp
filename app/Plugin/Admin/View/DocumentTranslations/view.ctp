@@ -2,10 +2,10 @@
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
-		
+
 		<div class="actions">
-			
-			<ul class="list-group">			
+
+			<ul class="list-group">
 						<li class="list-group-item"><?php echo $this->Html->link(__('Edit Document Translation'), array('action' => 'edit', $documentTranslation['DocumentTranslation']['id']), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete Document Translation'), array('action' => 'delete', $documentTranslation['DocumentTranslation']['id']), array('class' => ''), __('Are you sure you want to delete # %s?', $documentTranslation['DocumentTranslation']['id'])); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('action' => 'index'), array('class' => '')); ?> </li>
@@ -18,11 +18,10 @@
 		<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Document File'), array('controller' => 'document_files', 'action' => 'add'), array('class' => '')); ?> </li>
-				
 			</ul><!-- /.list-group -->
-			
+
 		</div><!-- /.actions -->
-		
+
 	</div><!-- /#sidebar .span3 -->
 	
 	<div id="page-content" class="col-sm-9">

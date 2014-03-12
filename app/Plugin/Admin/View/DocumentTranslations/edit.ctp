@@ -2,9 +2,9 @@
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
-		
+
 		<div class="actions">
-		
+
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('DocumentTranslation.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('DocumentTranslation.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('action' => 'index')); ?></li>
@@ -17,9 +17,9 @@
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index')); ?> </li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Document File'), array('controller' => 'document_files', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
-		
+
 		</div><!-- /.actions -->
-		
+
 	</div><!-- /#sidebar .col-sm-3 -->
 	
 	<div id="page-content" class="col-sm-9">

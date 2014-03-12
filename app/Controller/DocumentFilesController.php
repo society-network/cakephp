@@ -22,7 +22,7 @@ class DocumentFilesController extends AppController {
  */
 	public function index() {
 		$this->DocumentFile->recursive = 0;
-		$this->set('documentFiles', $this->Paginator->paginate());
+		$this->set('documentFiles', $this->paginate());
 	}
 
 /**
@@ -49,10 +49,10 @@ class DocumentFilesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->DocumentFile->create();
 			if ($this->DocumentFile->save($this->request->data)) {
-				$this->Session->setFlash(__('The document file has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document file has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document file could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document file could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 		$documents = $this->DocumentFile->Document->find('list');
@@ -68,15 +68,16 @@ class DocumentFilesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+        $this->DocumentFile->id = $id;
 		if (!$this->DocumentFile->exists($id)) {
 			throw new NotFoundException(__('Invalid document file'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->DocumentFile->save($this->request->data)) {
-				$this->Session->setFlash(__('The document file has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document file has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document file could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document file could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('DocumentFile.' . $this->DocumentFile->primaryKey => $id));
@@ -91,19 +92,22 @@ class DocumentFilesController extends AppController {
  * delete method
  *
  * @throws NotFoundException
+ * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
 		$this->DocumentFile->id = $id;
 		if (!$this->DocumentFile->exists()) {
 			throw new NotFoundException(__('Invalid document file'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->DocumentFile->delete()) {
-			$this->Session->setFlash(__('The document file has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The document file could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Document file deleted'), 'flash/success');
+			$this->redirect(array('action' => 'index'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('Document file was not deleted'), 'flash/error');
+		$this->redirect(array('action' => 'index'));
 	}}

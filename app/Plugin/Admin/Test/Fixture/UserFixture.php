@@ -38,9 +38,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 2,
@@ -48,9 +48,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 3,
@@ -58,9 +58,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 4,
@@ -68,9 +68,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 5,
@@ -78,9 +78,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 6,
@@ -88,9 +88,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 7,
@@ -98,9 +98,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 8,
@@ -108,9 +108,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 9,
@@ -118,9 +118,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 		array(
 			'id' => 10,
@@ -128,9 +128,9 @@ class UserFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => 1394658790,
-			'modified' => 1394658790,
-			'deleted' => 1394658790
+			'created' => 1394661919,
+			'modified' => 1394661919,
+			'deleted' => 1394661919
 		),
 	);
 

@@ -43,9 +43,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 2,
@@ -56,9 +56,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 3,
@@ -69,9 +69,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 4,
@@ -82,9 +82,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 5,
@@ -95,9 +95,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 6,
@@ -108,9 +108,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 7,
@@ -121,9 +121,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 8,
@@ -134,9 +134,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 9,
@@ -147,9 +147,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 		array(
 			'id' => 10,
@@ -160,9 +160,9 @@ class DocumentFileFixture extends CakeTestFixture {
 			'path' => 'Lorem ipsum dolor sit amet',
 			'is_a_link' => 1,
 			'is_login_required' => 1,
-			'created' => 1394658746,
-			'modified' => 1394658746,
-			'deleted' => 1394658746
+			'created' => 1394661873,
+			'modified' => 1394661873,
+			'deleted' => 1394661873
 		),
 	);
 

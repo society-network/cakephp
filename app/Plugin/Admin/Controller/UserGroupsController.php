@@ -22,7 +22,7 @@ class UserGroupsController extends AdminAppController {
  */
 	public function index() {
 		$this->UserGroup->recursive = 0;
-		$this->set('userGroups', $this->Paginator->paginate());
+		$this->set('userGroups', $this->paginate());
 	}
 
 /**
@@ -49,10 +49,10 @@ class UserGroupsController extends AdminAppController {
 		if ($this->request->is('post')) {
 			$this->UserGroup->create();
 			if ($this->UserGroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The user group has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The user group has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 		$parentUserGroups = $this->UserGroup->ParentUserGroup->find('list');
@@ -67,15 +67,16 @@ class UserGroupsController extends AdminAppController {
  * @return void
  */
 	public function edit($id = null) {
+        $this->UserGroup->id = $id;
 		if (!$this->UserGroup->exists($id)) {
 			throw new NotFoundException(__('Invalid user group'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->UserGroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The user group has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The user group has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('UserGroup.' . $this->UserGroup->primaryKey => $id));
@@ -89,19 +90,22 @@ class UserGroupsController extends AdminAppController {
  * delete method
  *
  * @throws NotFoundException
+ * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
 		$this->UserGroup->id = $id;
 		if (!$this->UserGroup->exists()) {
 			throw new NotFoundException(__('Invalid user group'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->UserGroup->delete()) {
-			$this->Session->setFlash(__('The user group has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The user group could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('User group deleted'), 'flash/success');
+			$this->redirect(array('action' => 'index'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('User group was not deleted'), 'flash/error');
+		$this->redirect(array('action' => 'index'));
 	}}

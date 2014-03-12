@@ -22,7 +22,7 @@ class DocumentsController extends AdminAppController {
  */
 	public function index() {
 		$this->Document->recursive = 0;
-		$this->set('documents', $this->Paginator->paginate());
+		$this->set('documents', $this->paginate());
 	}
 
 /**
@@ -49,10 +49,10 @@ class DocumentsController extends AdminAppController {
 		if ($this->request->is('post')) {
 			$this->Document->create();
 			if ($this->Document->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 		$parentDocuments = $this->Document->ParentDocument->find('list');
@@ -70,15 +70,16 @@ class DocumentsController extends AdminAppController {
  * @return void
  */
 	public function edit($id = null) {
+        $this->Document->id = $id;
 		if (!$this->Document->exists($id)) {
 			throw new NotFoundException(__('Invalid document'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Document->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('Document.' . $this->Document->primaryKey => $id));
@@ -95,19 +96,22 @@ class DocumentsController extends AdminAppController {
  * delete method
  *
  * @throws NotFoundException
+ * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
 		$this->Document->id = $id;
 		if (!$this->Document->exists()) {
 			throw new NotFoundException(__('Invalid document'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->Document->delete()) {
-			$this->Session->setFlash(__('The document has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The document could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Document deleted'), 'flash/success');
+			$this->redirect(array('action' => 'index'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('Document was not deleted'), 'flash/error');
+		$this->redirect(array('action' => 'index'));
 	}}

@@ -22,7 +22,7 @@ class LocalesController extends AdminAppController {
  */
 	public function index() {
 		$this->Locale->recursive = 0;
-		$this->set('locales', $this->Paginator->paginate());
+		$this->set('locales', $this->paginate());
 	}
 
 /**
@@ -49,10 +49,10 @@ class LocalesController extends AdminAppController {
 		if ($this->request->is('post')) {
 			$this->Locale->create();
 			if ($this->Locale->save($this->request->data)) {
-				$this->Session->setFlash(__('The locale has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The locale has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The locale could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The locale could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 	}
@@ -65,15 +65,16 @@ class LocalesController extends AdminAppController {
  * @return void
  */
 	public function edit($id = null) {
+        $this->Locale->id = $id;
 		if (!$this->Locale->exists($id)) {
 			throw new NotFoundException(__('Invalid locale'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Locale->save($this->request->data)) {
-				$this->Session->setFlash(__('The locale has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The locale has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The locale could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The locale could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('Locale.' . $this->Locale->primaryKey => $id));
@@ -85,19 +86,22 @@ class LocalesController extends AdminAppController {
  * delete method
  *
  * @throws NotFoundException
+ * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
 		$this->Locale->id = $id;
 		if (!$this->Locale->exists()) {
 			throw new NotFoundException(__('Invalid locale'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->Locale->delete()) {
-			$this->Session->setFlash(__('The locale has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The locale could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Locale deleted'), 'flash/success');
+			$this->redirect(array('action' => 'index'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('Locale was not deleted'), 'flash/error');
+		$this->redirect(array('action' => 'index'));
 	}}

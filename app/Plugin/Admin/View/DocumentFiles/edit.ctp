@@ -1,30 +1,69 @@
-<div class="documentFiles form">
-<?php echo $this->Form->create('DocumentFile'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Document File'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('document_id');
-		echo $this->Form->input('document_translation_id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('type');
-		echo $this->Form->input('path');
-		echo $this->Form->input('is_a_link');
-		echo $this->Form->input('is_login_required');
-		echo $this->Form->input('deleted');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('DocumentFile.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('DocumentFile.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Document Files'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<div id="page-container" class="row">
+
+	<div id="sidebar" class="col-sm-3">
+		
+		<div class="actions">
+		
+			<ul class="list-group">
+				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('DocumentFile.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('DocumentFile.id'))); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('action' => 'index')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add')); ?> </li>
+			</ul><!-- /.list-group -->
+		
+		</div><!-- /.actions -->
+		
+	</div><!-- /#sidebar .col-sm-3 -->
+	
+	<div id="page-content" class="col-sm-9">
+
+		<h2><?php echo __('Edit Document File'); ?></h2>
+
+		<div class="documentFiles form">
+		
+			<?php echo $this->Form->create('DocumentFile', array('role' => 'form')); ?>
+
+				<fieldset>
+
+					<div class="form-group">
+						<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('document_id', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('document_translation_id', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('type', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('path', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('is_a_link', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('is_login_required', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+					<div class="form-group">
+						<?php echo $this->Form->input('deleted', array('class' => 'form-control')); ?>
+					</div><!-- .form-group -->
+
+					<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
+
+				</fieldset>
+
+			<?php echo $this->Form->end(); ?>
+
+		</div><!-- /.form -->
+			
+	</div><!-- /#page-content .col-sm-9 -->
+
+</div><!-- /#page-container .row-fluid -->

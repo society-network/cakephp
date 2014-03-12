@@ -22,7 +22,7 @@ class DocumentTranslationsController extends AppController {
  */
 	public function index() {
 		$this->DocumentTranslation->recursive = 0;
-		$this->set('documentTranslations', $this->Paginator->paginate());
+		$this->set('documentTranslations', $this->paginate());
 	}
 
 /**
@@ -49,10 +49,10 @@ class DocumentTranslationsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->DocumentTranslation->create();
 			if ($this->DocumentTranslation->save($this->request->data)) {
-				$this->Session->setFlash(__('The document translation has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document translation has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document translation could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document translation could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 		$documents = $this->DocumentTranslation->Document->find('list');
@@ -69,15 +69,16 @@ class DocumentTranslationsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+        $this->DocumentTranslation->id = $id;
 		if (!$this->DocumentTranslation->exists($id)) {
 			throw new NotFoundException(__('Invalid document translation'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->DocumentTranslation->save($this->request->data)) {
-				$this->Session->setFlash(__('The document translation has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The document translation has been saved'), 'flash/success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document translation could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The document translation could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('DocumentTranslation.' . $this->DocumentTranslation->primaryKey => $id));
@@ -93,19 +94,22 @@ class DocumentTranslationsController extends AppController {
  * delete method
  *
  * @throws NotFoundException
+ * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
 		$this->DocumentTranslation->id = $id;
 		if (!$this->DocumentTranslation->exists()) {
 			throw new NotFoundException(__('Invalid document translation'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->DocumentTranslation->delete()) {
-			$this->Session->setFlash(__('The document translation has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The document translation could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Document translation deleted'), 'flash/success');
+			$this->redirect(array('action' => 'index'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('Document translation was not deleted'), 'flash/error');
+		$this->redirect(array('action' => 'index'));
 	}}

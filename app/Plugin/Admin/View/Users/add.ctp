@@ -2,9 +2,9 @@
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
-		
+
 		<div class="actions">
-		
+
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List User Groups'), array('controller' => 'user_groups', 'action' => 'index')); ?> </li>
@@ -14,9 +14,9 @@
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
-		
+
 		</div><!-- /.actions -->
-		
+
 	</div><!-- /#sidebar .col-sm-3 -->
 	
 	<div id="page-content" class="col-sm-9">

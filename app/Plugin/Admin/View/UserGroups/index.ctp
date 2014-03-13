@@ -1,7 +1,23 @@
 
-<div id="page-container">
+<div id="page-container" class="row">
+
+	<div id="sidebar" class="col-sm-3">
+
+		<div class="actions">
+
+			<ul class="list-group">
+				<li class="list-group-item"><?php echo $this->Html->link(__('New User Group'), array('action' => 'add'), array('class' => '')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List User Groups'), array('controller' => 'user_groups', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Parent User Group'), array('controller' => 'user_groups', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?></li> 
+			</ul><!-- /.list-group -->
+
+		</div><!-- /.actions -->
+
+	</div><!-- /#sidebar .col-sm-3 -->
 	
-	<div id="page-content">
+	<div id="page-content" class="col-sm-9">
 
 		<div class="userGroups index">
 		

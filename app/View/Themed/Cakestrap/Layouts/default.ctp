@@ -48,8 +48,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<div id="main-container">
 		
 			<div id="header" class="container">
-				<?php echo $this->element('menu/top_menu'); ?>
+				<?php echo $this->element('header'); ?>
 			</div><!-- /#header .container -->
+
+            <div id="main_nav" class="container">
+                <?php echo $this->element('menu/top_menu'); ?>
+            </div>
 			
 			<div id="content" class="container">
 				<?php echo $this->Session->flash(); ?>
@@ -57,7 +61,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</div><!-- /#content .container -->
 			
 			<div id="footer" class="container">
-				<?php //Silence is golden ?>
+                <?php echo $this->element('footer'); ?>
 			</div><!-- /#footer .container -->
 			
 		</div><!-- /#main-container -->

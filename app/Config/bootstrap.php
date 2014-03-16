@@ -107,4 +107,5 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
+CakePlugin::load('DynamicRoute');
 CakePlugin::load('Admin', array('bootstrap' => false, 'routes' => false));

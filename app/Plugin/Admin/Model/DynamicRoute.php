@@ -11,7 +11,7 @@ class DynamicRoute extends AdminAppModel {
  *
  * @var string
  */
-	public $primaryKey = 'slug';
+	public $primaryKey = 'id';
 
 /**
  * Display field
@@ -26,6 +26,16 @@ class DynamicRoute extends AdminAppModel {
  * @var array
  */
 	public $validate = array(
+        'document_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
 		'slug' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

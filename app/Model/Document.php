@@ -59,13 +59,6 @@ class Document extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentDocument' => array(
-			'className' => 'Document',
-			'foreignKey' => 'parent_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -121,19 +114,6 @@ class Document extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ChildDocument' => array(
-			'className' => 'Document',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
 	);
 
 }

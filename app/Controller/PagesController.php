@@ -74,4 +74,18 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
+
+    public function home() {
+        $this->loadModel('Document');
+        $this->loadModel('DocumentTranslation');
+        $this->loadModel('DynamicRoute.DynamicRoute');
+        $options = array('conditions' => array('DynamicRoute.slug' => '/home'));
+        $dynamicRoute = $this->DynamicRoute->find('first', $options);
+        //if ($dynamicRoute) {
+            $options = array('conditions' => array('Document.' . $this->Document->primaryKey => $dynamicRoute['DynamicRoute']['document_id']));
+            $homepage= $this->Document->find('first', $options);
+            $this->set('title_for_layout', $homepage['Document']['name']);
+            $this->set('body', $homepage['Document']['body']);
+        //}
+    }
 }

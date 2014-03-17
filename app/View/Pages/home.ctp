@@ -8,3 +8,4 @@
         </div>
     </div>
 </div>
+<div><?php echo $body; ?></div>

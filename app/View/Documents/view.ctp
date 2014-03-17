@@ -234,7 +234,6 @@
 							<thead>
 								<tr>
 											<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Parent Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Locale Id'); ?></th>
 		<th><?php echo __('Category Id'); ?></th>
@@ -254,7 +253,6 @@
 										foreach ($document['ChildDocument'] as $childDocument): ?>
 		<tr>
 			<td><?php echo $childDocument['id']; ?></td>
-			<td><?php echo $childDocument['parent_id']; ?></td>
 			<td><?php echo $childDocument['user_id']; ?></td>
 			<td><?php echo $childDocument['locale_id']; ?></td>
 			<td><?php echo $childDocument['category_id']; ?></td>

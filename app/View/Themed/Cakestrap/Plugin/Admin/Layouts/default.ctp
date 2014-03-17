@@ -23,7 +23,7 @@ $cakeDescription = __d('cake_dev', 'Admin Panel');
 	<head>
 		<?php echo $this->Html->charset(); ?>
 		<title>
-			<?php echo $cakeDescription ?>:
+			<?php //echo $cakeDescription ?>
 			<?php echo $title_for_layout; ?>
 		</title>
 		<?php

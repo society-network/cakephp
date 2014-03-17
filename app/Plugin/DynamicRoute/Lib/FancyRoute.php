@@ -84,7 +84,7 @@ class FancyRoute {
         $routes = array();
 		$dynamic_routes = static::$model->find('all', array('conditions' => array(static::$model->name.'.active' => 1)));
         foreach ($dynamic_routes as $value) {
-            $routes[$value[static::$model->name]['slug']] = $value[static::$model->name]['spec'];
+            $routes[$value[static::$model->name]['slug']] = unserialize($value[static::$model->name]['spec']);
         }
         static::$_routes = $routes;
 		if (static::$_routes) {
@@ -100,7 +100,7 @@ class FancyRoute {
 
 	public static function _loadRoutes() {
 		foreach (static::$_routes as $slug => $spec) {
-			Router::connect($slug, static::$model->parse($spec));
+			Router::connect($slug, $spec);
 		}
 		return true;
 	}

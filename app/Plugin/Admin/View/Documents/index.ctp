@@ -36,7 +36,6 @@
 					<thead>
 						<tr>
 							<th><?php echo $this->Paginator->sort('id'); ?></th>
-							<!--th><?php //echo $this->Paginator->sort('parent_id'); ?></th-->
 							<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('locale_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('category_id'); ?></th>
@@ -54,9 +53,6 @@
 <?php foreach ($documents as $document): ?>
 	<tr>
 		<td><?php echo h($document['Document']['id']); ?>&nbsp;</td>
-		<!--td>
-			<?php //echo $this->Html->link($document['ParentDocument']['name'], array('controller' => 'documents', 'action' => 'view', $document['ParentDocument']['id'])); ?>
-		</td-->
 		<td>
 			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'view', $document['User']['id'])); ?>
 		</td>

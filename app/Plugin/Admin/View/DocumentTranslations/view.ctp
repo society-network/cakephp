@@ -68,6 +68,16 @@
 			<?php echo h($documentTranslation['DocumentTranslation']['body']); ?>
 			&nbsp;
 		</td>
+</tr><tr>		<td><strong><?php echo __('Cover Img'); ?></strong></td>
+        <td>
+            <?php echo h($document['Document']['cover_img']); ?>
+            &nbsp;
+        </td>
+ </tr><tr>		<td><strong><?php echo __('Thumbnail'); ?></strong></td>
+        <td>
+            <?php echo h($document['Document']['thumbnail']); ?>
+            &nbsp;
+        </td>
 </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
 		<td>
 			<?php echo h($documentTranslation['DocumentTranslation']['created']); ?>

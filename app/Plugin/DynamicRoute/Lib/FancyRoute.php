@@ -34,7 +34,7 @@ class FancyRoute {
 	static $options = array(
 		'model' => 'DynamicRoute.DynamicRoute',
 		'cacheKey' => 'dynamic_routes',
-		'cache' => true,
+		'cache' => false,
 	);
 
 	static $_routes = array();
@@ -81,7 +81,12 @@ class FancyRoute {
 			return false;
 		}
 
-		static::$_routes = static::$model->find('load');
+        $routes = array();
+		$dynamic_routes = static::$model->find('all', array('conditions' => array(static::$model->name.'.active' => 1)));
+        foreach ($dynamic_routes as $value) {
+            $routes[$value[static::$model->name]['slug']] = $value[static::$model->name]['spec'];
+        }
+        static::$_routes = $routes;
 		if (static::$_routes) {
 			if (static::$options['cache']) {
 				Cache::write(static::$options['cacheKey'], static::$_routes);
@@ -95,7 +100,7 @@ class FancyRoute {
 
 	public static function _loadRoutes() {
 		foreach (static::$_routes as $slug => $spec) {
-			Router::connect($slug, $spec);
+			Router::connect($slug, static::$model->parse($spec));
 		}
 		return true;
 	}

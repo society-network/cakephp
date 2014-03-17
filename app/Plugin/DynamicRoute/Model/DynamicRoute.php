@@ -9,16 +9,12 @@ class DynamicRoute extends DynamicRouteAppModel {
 			),
 		),
 		'spec' => array(
-			'required' => array(
-				'rule' => array('validSpec'),
-				'message' => 'Invalid specification',
-			),
 			'minLength' => array(
 				'rule' => array('minLength', 3),
 				'message' => 'Specification must be at least 3 characters long',
 			),
 			'maxLength' => array(
-				'rule' => array('between', 255),
+				'rule' => array('maxLength', 255),
 				'message' => 'Slug must be at most 255 characters',
 			),
 		),
@@ -162,7 +158,7 @@ class DynamicRoute extends DynamicRouteAppModel {
  */
 	public function normalize($params) {
 		if (is_string($params)) {
-			$params = $this->parse($spec);
+			$params = $this->parse($params);
 		}
 
 		$path = "{$params["controller"]}/{$params["action"]}";
@@ -217,10 +213,30 @@ class DynamicRoute extends DynamicRouteAppModel {
 			return false;
 		}
 
-		list($controller, $action) = explode("/", $path, 2);
 
-		$params = array();
-		if ($query !== null) {
+        $controller = null;
+        $action = null;
+        $extra_param = null;
+		$paths = explode("/", $path);
+        $paths_size = sizeof($paths);
+        if ($paths_size == 2) {
+            $controller = $paths[1];
+            $action = 'index';
+        } elseif ($paths_size == 3) {
+            $controller = $paths[1];
+            $action = $paths[2];
+        } else {
+            $controller = $paths[1];
+            $action = $paths[2];
+            $extra_param = $paths[3];
+        }
+
+        $params = array();
+        if ($extra_param) {
+            $params[] = $extra_param;
+        }
+
+		if ($query) {
 			foreach (explode("&", $query) as $pair) {
 				$param = explode("=", $pair, 2);
 				if (count($param) !== 2) {
@@ -237,7 +253,7 @@ class DynamicRoute extends DynamicRouteAppModel {
 			}
 		}
 
-		return array_merge($params, compact('controller', 'action'));
+		return array_merge(compact('controller', 'action'), $params);
 	}
 
 }

@@ -16,6 +16,7 @@
 					<li><?php echo $this->Html->link(__('Documents'), array('controller' => 'documents', 'action' => 'index')); ?></li>
 					<li><?php echo $this->Html->link(__('Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?></li>
 					<li><?php echo $this->Html->link(__('Files'), array('controller' => 'document_files', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link(__('Menus'), array('controller' => 'menus', 'action' => 'index')); ?></li>
 				</ul>
 			</li>
             <li class="dropdown">

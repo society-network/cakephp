@@ -77,6 +77,16 @@
 			<?php echo h($document['Document']['body']); ?>
 			&nbsp;
 		</td>
+</tr><tr>		<td><strong><?php echo __('Cover Img'); ?></strong></td>
+                            <td>
+                                <?php echo h($document['Document']['cover_img']); ?>
+                                &nbsp;
+                            </td>
+</tr><tr>		<td><strong><?php echo __('Thumbnail'); ?></strong></td>
+                            <td>
+                                <?php echo h($document['Document']['thumbnail']); ?>
+                                &nbsp;
+                            </td>
 </tr><tr>		<td><strong><?php echo __('Is Login Required'); ?></strong></td>
 		<td>
 			<?php echo h($document['Document']['is_login_required']); ?>

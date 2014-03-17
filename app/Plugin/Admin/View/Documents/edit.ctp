@@ -60,12 +60,22 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('body', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('cover_img', array('class' => 'form-control')); ?>
+                    </div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('thumbnail', array('class' => 'form-control')); ?>
+                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('is_login_required', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php //echo $this->Form->input('deleted', array('class' => 'form-control')); ?>
-					</div><!-- .form-group -->
+                        <?php //echo $this->Form->input('deleted', array('class' => 'form-control')); ?>
+                    </div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('DynamicRoute.slug', array('class' => 'form-control',
+                            'default' => $default_slug)); ?>
+                    </div><!-- .form-group -->
 
 					<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
 

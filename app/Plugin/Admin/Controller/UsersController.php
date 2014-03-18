@@ -15,6 +15,12 @@ class UsersController extends AdminAppController {
  */
 	public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to edit, good for password recovery.
+        $this->Auth->allow('edit');
+    }
+
 /**
  * index method
  *
@@ -108,4 +114,18 @@ class UsersController extends AdminAppController {
 		}
 		$this->Session->setFlash(__('User was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
-	}}
+	}
+
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Session->setFlash(__('Invalid username or password, try again'));
+        }
+    }
+
+    public function logout() {
+        return $this->redirect($this->Auth->logout());
+    }
+}

@@ -28,13 +28,12 @@
 					<thead>
 						<tr>
 							<th><?php echo $this->Paginator->sort('id'); ?></th>
+							<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('document_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('document_translation_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('name'); ?></th>
 							<th><?php echo $this->Paginator->sort('type'); ?></th>
 							<th><?php echo $this->Paginator->sort('path'); ?></th>
-							<th><?php echo $this->Paginator->sort('is_a_link'); ?></th>
-							<th><?php echo $this->Paginator->sort('is_login_required'); ?></th>
 							<th><?php echo $this->Paginator->sort('created'); ?></th>
 							<th><?php echo $this->Paginator->sort('modified'); ?></th>
 							<th><?php echo $this->Paginator->sort('deleted'); ?></th>
@@ -45,6 +44,9 @@
 <?php foreach ($documentFiles as $documentFile): ?>
 	<tr>
 		<td><?php echo h($documentFile['DocumentFile']['id']); ?>&nbsp;</td>
+        <td>
+            <?php echo $this->Html->link($documentFile['User']['name'], array('controller' => 'users', 'action' => 'view', $documentFile['User']['id'])); ?>
+        </td>
 		<td>
 			<?php echo $this->Html->link($documentFile['Document']['name'], array('controller' => 'documents', 'action' => 'view', $documentFile['Document']['id'])); ?>
 		</td>
@@ -54,8 +56,6 @@
 		<td><?php echo h($documentFile['DocumentFile']['name']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['type']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['path']); ?>&nbsp;</td>
-		<td><?php echo h($documentFile['DocumentFile']['is_a_link']); ?>&nbsp;</td>
-		<td><?php echo h($documentFile['DocumentFile']['is_login_required']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['created']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['deleted']); ?>&nbsp;</td>

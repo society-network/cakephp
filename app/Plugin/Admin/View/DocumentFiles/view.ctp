@@ -34,6 +34,11 @@
 			<?php echo h($documentFile['DocumentFile']['id']); ?>
 			&nbsp;
 		</td>
+</tr><tr>		<td><strong><?php echo __('User'); ?></strong></td>
+    <td>
+        <?php echo $this->Html->link($documentFile['User']['name'], array('controller' => 'users', 'action' => 'view', $documentFile['User']['id']), array('class' => '')); ?>
+        &nbsp;
+    </td>
 </tr><tr>		<td><strong><?php echo __('Document'); ?></strong></td>
 		<td>
 			<?php echo $this->Html->link($documentFile['Document']['name'], array('controller' => 'documents', 'action' => 'view', $documentFile['Document']['id']), array('class' => '')); ?>
@@ -57,11 +62,6 @@
 </tr><tr>		<td><strong><?php echo __('Path'); ?></strong></td>
 		<td>
 			<?php echo h($documentFile['DocumentFile']['path']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Is A Link'); ?></strong></td>
-		<td>
-			<?php echo h($documentFile['DocumentFile']['is_a_link']); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Is Login Required'); ?></strong></td>

@@ -29,7 +29,13 @@
                     <li><?php echo $this->Html->link(__('Dynamic Routes'), array('controller' => 'dynamic_routes', 'action' => 'index')); ?></li>
                 </ul>
             </li>
-            <li><a href="#">Logout</a></li>
+            <li><?php
+                if (AuthComponent::user('id')) {
+                    echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout'));
+                } else {
+                    echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login'));
+                }
+                ?></li>
 		</ul><!-- /.nav navbar-nav -->
 	</div><!-- /.navbar-collapse -->
 </nav><!-- /.navbar navbar-default -->

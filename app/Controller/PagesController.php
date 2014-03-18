@@ -37,6 +37,12 @@ class PagesController extends AppController {
  */
 	public $uses = array();
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to home.
+        $this->Auth->allow('home');
+    }
+
 /**
  * Displays a view
  *

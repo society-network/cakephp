@@ -47,9 +47,6 @@
 						<?php echo $this->Form->input('path', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('is_a_link', array('class' => 'form-control')); ?>
-					</div><!-- .form-group -->
-					<div class="form-group">
 						<?php echo $this->Form->input('is_login_required', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">

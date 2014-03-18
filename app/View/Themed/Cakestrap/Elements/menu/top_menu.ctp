@@ -29,7 +29,13 @@
             </li>
             <li><a href="#">Career</a></li>
             <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Login</a></li>
+            <li><?php
+                if (AuthComponent::user('id')) {
+                    echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout'));
+                } else {
+                    echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login'));
+                }
+                ?></li>
 		</ul><!-- /.nav navbar-nav -->
 	</div><!-- /.navbar-collapse -->
 </nav><!-- /.navbar navbar-default -->

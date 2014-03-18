@@ -33,6 +33,33 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $theme = "Cakestrap";
 
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginAction' => array(
+                'controller' => 'users',
+                'action' => 'login',
+            ),
+//            'loginRedirect' => array(
+//                'controller' => 'pages',
+//                'action' => 'home'
+//            ),
+            'logoutRedirect' => array(
+                'controller' => 'pages',
+                'action' => 'home',
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email'),
+                )
+            )
+        )
+    );
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+    }
+
     public function index() {
 
     }

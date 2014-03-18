@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 18 日 10:20
+-- 生成日期: 2014 年 03 月 19 日 10:59
 -- 服务器版本: 5.5.31
 -- PHP 版本: 5.4.4-14+deb7u5
 
@@ -50,12 +50,12 @@ INSERT INTO `categories` (`id`, `parent_id`, `name`, `created`, `modified`, `del
 DROP TABLE IF EXISTS `document_files`;
 CREATE TABLE IF NOT EXISTS `document_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `document_id` int(11) DEFAULT NULL,
   `document_translation_id` int(11) DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `type` varchar(45) NOT NULL,
   `path` varchar(100) NOT NULL,
-  `is_a_link` tinyint(1) NOT NULL DEFAULT '0',
   `is_login_required` tinyint(1) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`name`)
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -249,4 +249,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_group_id`, `name`, `password`, `email`, `created`, `modified`, `deleted`) VALUES
-(1, 1, 'admin', '', 'admin@uiproperties.com.au', '2014-03-13 07:15:06', NULL, NULL);
+(1, 1, 'admin', '277679f118eeb919714f0358f605d15f806b5bf4', 'admin@uiproperties.com.au', '2014-03-13 07:15:06', '2014-03-19 10:42:48', NULL);

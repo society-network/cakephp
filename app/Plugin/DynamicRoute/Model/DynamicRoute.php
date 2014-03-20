@@ -38,6 +38,21 @@ class DynamicRoute extends DynamicRouteAppModel {
 		),
 	);
 
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
+    public $belongsTo = array(
+        'Document' => array(
+            'className' => 'Document',
+            'foreignKey' => 'document_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct();
 		$this->findMethods['load'] = true;

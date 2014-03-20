@@ -49,6 +49,7 @@ class DocumentsController extends AdminAppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Document->create();
+            $this->request->data['Document']['user_id'] = $this->Auth->user('id');
 			if ($this->Document->save($this->request->data)) {
 				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
@@ -56,11 +57,10 @@ class DocumentsController extends AdminAppController {
 				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
-		$parentDocuments = $this->Document->ParentDocument->find('list');
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
-		$this->set(compact('parentDocuments', 'users', 'locales', 'categories'));
+		$this->set(compact('users', 'locales', 'categories'));
 	}
 
 /**
@@ -72,6 +72,7 @@ class DocumentsController extends AdminAppController {
  */
 	public function edit($id = null) {
         $this->loadModel('DynamicRoute.DynamicRoute');
+        $this->loadModel('DocumentTranslation');
         $spec = array('plugin' => null, 'controller' => 'documents', 'action' => 'view', $id);
         $spec = serialize($spec);
 
@@ -115,8 +116,18 @@ class DocumentsController extends AdminAppController {
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
-        $dynamicRoutes = $this->DynamicRoute->find('first');
+        $options = array('conditions' => array('DynamicRoute.document_id' => $id));
+        $dynamicRoutes = $this->DynamicRoute->find('first', $options);
 		$this->set(compact('users', 'locales', 'categories', 'dynamicRoutes'));
+
+        $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => 0,
+            'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
+        $documentTranslations = $this->DocumentTranslation->find('all', $options);
+        $available_locales = array();
+        foreach ($documentTranslations as $translate) {
+            $available_locales[$translate['DocumentTranslation']['locale_id']] = $translate['DocumentTranslation']['id'];
+        }
+        $this->set('available_locales', $available_locales);
 	}
 
 /**

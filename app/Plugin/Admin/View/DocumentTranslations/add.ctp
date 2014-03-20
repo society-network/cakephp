@@ -4,17 +4,10 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('controller' => 'locales', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('controller' => 'locales', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document File'), array('controller' => 'document_files', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -32,13 +25,13 @@
 				<fieldset>
 
 					<div class="form-group">
-						<?php echo $this->Form->input('document_id', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('document_id', array('class' => 'form-control', 'selected' => $document_id, 'disabled' => isset($document_id))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'selected' => $locale_id, 'disabled' => isset($locale_id))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
+						<?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

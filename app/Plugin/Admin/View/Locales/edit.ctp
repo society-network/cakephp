@@ -4,14 +4,11 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Locale.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Locale.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('action' => 'index')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('Add Locale'), array('controller' => 'locales', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->

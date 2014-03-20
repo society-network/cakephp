@@ -4,7 +4,7 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('action' => 'index')); ?></li>
 			</ul><!-- /.list-group -->
@@ -23,9 +23,6 @@
 
 				<fieldset>
 
-					<div class="form-group">
-						<?php echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
-					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('locale_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->

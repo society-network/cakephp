@@ -4,7 +4,7 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Menu.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Menu.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Menus'), array('action' => 'index')); ?></li>

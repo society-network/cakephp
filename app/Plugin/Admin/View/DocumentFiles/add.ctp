@@ -4,7 +4,7 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>

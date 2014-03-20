@@ -4,15 +4,10 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('action' => 'add'), array('class' => '')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List User Groups'), array('controller' => 'user_groups', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New User Group'), array('controller' => 'user_groups', 'action' => 'add'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?></li> 
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?></li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -33,9 +28,9 @@
 							<th><?php echo $this->Paginator->sort('user_group_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('name'); ?></th>
 							<th><?php echo $this->Paginator->sort('email'); ?></th>
-							<th><?php echo $this->Paginator->sort('created'); ?></th>
+							<!--th><?php //echo $this->Paginator->sort('created'); ?></th-->
 							<th><?php echo $this->Paginator->sort('modified'); ?></th>
-							<th><?php echo $this->Paginator->sort('deleted'); ?></th>
+							<!--th><?php //echo $this->Paginator->sort('deleted'); ?></th-->
 							<th class="actions"><?php echo __('Actions'); ?></th>
 						</tr>
 					</thead>
@@ -48,11 +43,11 @@
 		</td>
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
+		<!--td><?php //echo h($user['User']['created']); ?>&nbsp;</td-->
 		<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['deleted']); ?>&nbsp;</td>
+		<!--td><?php //echo h($user['User']['deleted']); ?>&nbsp;</td-->
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
 		</td>

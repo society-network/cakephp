@@ -4,18 +4,30 @@
 	<div id="sidebar" class="col-sm-3">
 
 		<div class="actions">
-
+            <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Document.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Document.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document File'), array('controller' => 'document_files', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
+
+        <div class="actions">
+            <h4><?php echo __('Translations'); ?></h4>
+            <ul class="list-group">
+                <?php foreach ($locales as $locale_id=>$locale_name): ?>
+                    <?php if ($locale_id == $this->data['Document']['locale_id']): ?>
+                        <li class="list-group-item"><?php echo $locale_name; ?></li>
+                    <?php elseif (in_array($locale_id, array_keys($available_locales))): ?>
+                        <li class="list-group-item"><?php echo $this->Html->link($locale_name, array('controller' => 'document_translations', 'action' => 'edit', $available_locales[$locale_id])); ?> </li>
+                    <?php else: ?>
+                        <li class="list-group-item"><?php echo $this->Html->link($locale_name, array('controller' => 'document_translations', 'action' => 'add', 'document_id' => $this->data['Document']['id'], 'locale_id' => $locale_id)); ?> </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul><!-- /.list-group -->
+
+        </div><!-- /.actions -->
 
 	</div><!-- /#sidebar .col-sm-3 -->
 	
@@ -33,10 +45,10 @@
 						<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
+						<?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('category_id', array('class' => 'form-control')); ?>

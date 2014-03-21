@@ -29,6 +29,28 @@
 
         </div><!-- /.actions -->
 
+        <div class="actions">
+            <h4><?php echo __('Files'); ?></h4>
+            <ul class="list-group">
+                <?php foreach ($documentFiles as $doc_file): ?>
+                    <li class="list-group-item"><a target="_blank" href="<?php echo '/' . UPLOAD_FOLDER . '/' . urlencode(basename($doc_file['DocumentFile']['path'])); ?>"><?php echo $doc_file['DocumentFile']['name']; ?></a></li>
+                <?php endforeach; ?>
+            </ul><!-- /.list-group -->
+
+            <div class="users form">
+                <?php echo $this->Form->create('DocumentFile', array('type' => 'file', 'role' => 'form')); ?>
+                <fieldset>
+                    <div class="form-group">
+                        <?php echo $this->Form->hidden('DocumentFile.is_login_required', array('value' => isset($this->data['Document']['is_login_required'])?1:0)); ?>
+                        <?php echo $this->Form->input('DocumentFile.new_file', array('type' => 'file')); ?>
+                    </div><!-- .form-group -->
+                    <?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
+                </fieldset>
+                <?php echo $this->Form->end(); ?>
+            </div>
+
+        </div><!-- /.actions -->
+
 	</div><!-- /#sidebar .col-sm-3 -->
 	
 	<div id="page-content" class="col-sm-9">

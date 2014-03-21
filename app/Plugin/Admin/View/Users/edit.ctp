@@ -35,7 +35,8 @@
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->hidden('old_hash', array('value' => $this->data['User']['password'])); ?>
+						<?php echo $this->Form->input('new_password', array('class' => 'form-control', 'type' => 'password')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>

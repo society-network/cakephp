@@ -73,11 +73,23 @@ class UsersController extends AdminAppController {
  * @return void
  */
 	public function edit($id = null) {
+        App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
         $this->User->id = $id;
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+            if (isset($this->request->data['User']['new_password'])) {
+                $new_password = trim($this->request->data['User']['new_password']);
+                $passwordHasher = new SimplePasswordHasher();
+                $new_password_hash = $passwordHasher->hash($new_password);
+                if ($new_password && $new_password_hash != $this->request->data['User']['old_hash']) {
+                    $this->request->data['User']['password'] = $new_password;
+                }
+            }
+            unset($this->request->data['User']['new_password']);
+            unset($this->request->data['User']['old_hash']);
+
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));

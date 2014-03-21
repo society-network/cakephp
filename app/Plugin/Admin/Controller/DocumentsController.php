@@ -73,6 +73,7 @@ class DocumentsController extends AdminAppController {
 	public function edit($id = null) {
         $this->loadModel('DynamicRoute.DynamicRoute');
         $this->loadModel('DocumentTranslation');
+        $this->loadModel('DocumentFile');
         $spec = array('plugin' => null, 'controller' => 'documents', 'action' => 'view', $id);
         $spec = serialize($spec);
 
@@ -80,7 +81,32 @@ class DocumentsController extends AdminAppController {
 		if (!$this->Document->exists($id)) {
 			throw new NotFoundException(__('Invalid document'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+        if (isset($this->request->data['DocumentFile']['new_file'])) {
+            $new_file = $this->request->data['DocumentFile']['new_file'];
+            if ($this->request->is('post') && $new_file['tmp_name'] && is_uploaded_file($new_file['tmp_name']) && $new_file['error'] == 0) {
+                $this->DocumentFile->create();
+                $filename = basename($new_file['name']);
+                $path = WWW_ROOT . UPLOAD_FOLDER . DS . time() . '_' . $filename;
+                $new_doc_file = array('DocumentFile' => array(
+                    'user_id' => $this->Auth->user('id'),
+                    'document_id' => $id,
+                    'name' => $new_file['name'],
+                    'type' => $new_file['type'],
+                    'size' => $new_file['size'],
+                    'path' => $path,
+                    'is_login_required' => $this->request->data['DocumentFile']['is_login_required'],
+                ));
+                if (move_uploaded_file($new_file['tmp_name'], $path) && $this->DocumentFile->save($new_doc_file)) {
+                    $this->Session->setFlash(__('File uploaded successful'), 'flash/success');
+                } else {
+                    $this->Session->setFlash(__('File cannot be saved. Please, try again.'), 'flash/error');
+                }
+            } elseif ($new_file['error'] != 4 && $new_file['error'] != 0) {
+                $this->Session->setFlash(__('File upload failed, error code %s.', $new_file['error']), 'flash/error');
+            }
+        }
+		elseif (($this->request->is('post') || $this->request->is('put'))
+            && !isset($this->request->data['DocumentFile']['new_file'])) {
 			if ($this->Document->save($this->request->data)) {
                 if (isset($this->request->data['DynamicRoute']['slug'])) {
                     $slug = strtolower(trim($this->request->data['DynamicRoute']['slug']));
@@ -103,16 +129,16 @@ class DocumentsController extends AdminAppController {
 
                 }
 				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
-				$this->redirect(array('action' => 'index'));
+				//$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
-		} else {
+		}// else {
 			$options = array('conditions' => array('Document.' . $this->Document->primaryKey => $id));
 			$this->request->data = $this->Document->find('first', $options);
             $default_slug = Inflector::slug(strtolower(trim($this->request->data['Document']['name'])), '-');
             $this->set('default_slug', $default_slug);
-		}
+		//}
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
@@ -128,6 +154,10 @@ class DocumentsController extends AdminAppController {
             $available_locales[$translate['DocumentTranslation']['locale_id']] = $translate['DocumentTranslation']['id'];
         }
         $this->set('available_locales', $available_locales);
+
+        $options = array('conditions' => array('DocumentFile.document_id' => $id), 'recursive' => 0);
+        $documentFiles = $this->DocumentFile->find('all', $options);
+        $this->set('documentFiles', $documentFiles);
 	}
 
 /**

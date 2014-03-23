@@ -20,7 +20,7 @@ class CategoriesController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function index($name = null) {
 		$this->Category->recursive = 0;
 		$this->set('categories', $this->paginate());
 	}

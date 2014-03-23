@@ -1,23 +1,7 @@
 
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-		
-			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('action' => 'add'), array('class' => '')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?></li> 
-			</ul><!-- /.list-group -->
-			
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .col-sm-3 -->
 	
-	<div id="page-content" class="col-sm-9">
+	<div id="page-content" class="col-sm-12">
 
 		<div class="locales index">
 		
@@ -33,7 +17,6 @@
 							<th><?php echo $this->Paginator->sort('created'); ?></th>
 							<th><?php echo $this->Paginator->sort('modified'); ?></th>
 							<th><?php echo $this->Paginator->sort('deleted'); ?></th>
-							<th class="actions"><?php echo __('Actions'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,11 +28,6 @@
 		<td><?php echo h($locale['Locale']['created']); ?>&nbsp;</td>
 		<td><?php echo h($locale['Locale']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($locale['Locale']['deleted']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $locale['Locale']['id'])); ?>
-		</td>
 	</tr>
 <?php endforeach; ?>
 					</tbody>

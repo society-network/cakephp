@@ -52,9 +52,6 @@
 					<div class="form-group">
 						<?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
-                    <div class="form-group">
-                        <?php echo $this->Form->input('parent_id', array('empty' => true, 'class' => 'form-control', 'label' => __('Parent'))); ?>
-                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
 					</div><!-- .form-group -->

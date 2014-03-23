@@ -24,7 +24,7 @@
 				<fieldset>
 
 					<div class="form-group">
-						<?php echo $this->Form->input('parent_id', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('parent_id', array('disabled' => isset($parent_id),'selected' => $parent_id, 'empty' => true, 'class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

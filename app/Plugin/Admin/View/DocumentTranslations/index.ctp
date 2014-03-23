@@ -42,10 +42,10 @@
 	<tr>
 		<td><?php echo h($documentTranslation['DocumentTranslation']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($documentTranslation['Document']['name'], array('controller' => 'documents', 'action' => 'view', $documentTranslation['Document']['id'])); ?>
+			<?php echo $this->Html->link($documentTranslation['Document']['name'], array('controller' => 'documents', 'action' => 'edit', $documentTranslation['Document']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($documentTranslation['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $documentTranslation['Locale']['id'])); ?>
+			<?php echo $this->Html->link($documentTranslation['Locale']['name'], array('controller' => 'locales', 'action' => 'edit', $documentTranslation['Locale']['id'])); ?>
 		</td>
 		<!--td>
 			<?php //echo $this->Html->link($documentTranslation['User']['name'], array('controller' => 'users', 'action' => 'view', $documentTranslation['User']['id'])); ?>

@@ -43,13 +43,13 @@
 	<tr>
 		<td><?php echo h($document['Document']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'view', $document['User']['id'])); ?>
+			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'edit', $document['User']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($document['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $document['Locale']['id'])); ?>
+			<?php echo $this->Html->link($document['Locale']['name'], array('controller' => 'locales', 'action' => 'edit', $document['Locale']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($document['Category']['name'], array('controller' => 'categories', 'action' => 'view', $document['Category']['id'])); ?>
+			<?php echo $this->Html->link($document['Category']['name'], array('controller' => 'categories', 'action' => 'edit', $document['Category']['id'])); ?>
 		</td>
 		<td><?php echo h($document['Document']['name']); ?>&nbsp;</td>
 		<!--td><?php //echo h($document['Document']['summary']); ?>&nbsp;</td-->
@@ -60,7 +60,6 @@
 		<!--td><?php //echo h($document['Document']['deleted']); ?>&nbsp;</td-->
 		<td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Html->link(__('New Sub'), array('action' => 'add', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $document['Document']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $document['Document']['id'])); ?>
 		</td>

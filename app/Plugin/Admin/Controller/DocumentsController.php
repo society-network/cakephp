@@ -45,24 +45,12 @@ class DocumentsController extends AdminAppController {
     /**
      * add method
      *
-     * @param null $parent_id
      * @return void
      */
-	public function add($parent_id = null) {
-        $this->set('parent_id', $parent_id);
-        if ($parent_id) {
-            $my_parent = $this->Document->findById($parent_id);
-            if (empty($my_parent['Document'])) {
-                throw new NotFoundException(__('Invalid parent document'));
-            } else {
-                $this->set('my_parent', $my_parent['Document']);
-            }
-        }
-
+	public function add() {
 		if ($this->request->is('post')) {
 			$this->Document->create();
             $this->request->data['Document']['user_id'] = $this->Auth->user('id');
-            $this->request->data['Document']['parent_id'] = $parent_id;
 			if ($this->Document->save($this->request->data)) {
                 $new_id = $new_id = $this->Document->getLastInsertId();
 				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
@@ -71,11 +59,10 @@ class DocumentsController extends AdminAppController {
 				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
-		$parents = $this->Document->find('list');
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
-		$this->set(compact('parents', 'users', 'locales', 'categories'));
+		$this->set(compact('users', 'locales', 'categories'));
 	}
 
 /**
@@ -155,13 +142,12 @@ class DocumentsController extends AdminAppController {
             $default_slug = Inflector::slug(strtolower(trim($this->request->data['Document']['name'])), '-');
             $this->set('default_slug', $default_slug);
 		//}
-        $parents = $this->Document->find('list');
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
         $options = array('conditions' => array('DynamicRoute.document_id' => $id));
         $dynamicRoutes = $this->DynamicRoute->find('first', $options);
-		$this->set(compact('parents', 'users', 'locales', 'categories', 'dynamicRoutes'));
+		$this->set(compact('users', 'locales', 'categories', 'dynamicRoutes'));
 
         $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => 0,
             'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));

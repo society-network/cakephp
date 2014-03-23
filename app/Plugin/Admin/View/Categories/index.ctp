@@ -38,7 +38,7 @@
 	<tr>
 		<td><?php echo h($category['Category']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($category['ParentCategory']['name'], array('controller' => 'categories', 'action' => 'view', $category['ParentCategory']['id'])); ?>
+			<?php echo $this->Html->link($category['Parent']['name'], array('controller' => 'categories', 'action' => 'edit', $category['Parent']['id'])); ?>
 		</td>
 		<td><?php echo h($category['Category']['name']); ?>&nbsp;</td>
 		<!--td><?php //echo h($category['Category']['created']); ?>&nbsp;</td-->
@@ -46,6 +46,7 @@
 		<!--td><?php //echo h($category['Category']['deleted']); ?>&nbsp;</td-->
 		<td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $category['Category']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php echo $this->Html->link(__('New Child'), array('action' => 'add', $category['Category']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?>
 		</td>

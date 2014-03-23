@@ -32,7 +32,7 @@
 		</td>
 </tr><tr>		<td><strong><?php echo __('Parent Category'); ?></strong></td>
 		<td>
-			<?php echo $this->Html->link($category['ParentCategory']['name'], array('controller' => 'categories', 'action' => 'view', $category['ParentCategory']['id']), array('class' => '')); ?>
+			<?php echo $this->Html->link($category['Parent']['name'], array('controller' => 'categories', 'action' => 'view', $category['Parent']['id']), array('class' => '')); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Name'); ?></strong></td>

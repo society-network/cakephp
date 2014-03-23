@@ -1,23 +1,7 @@
 
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-		
-			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('New User Group'), array('action' => 'add'), array('class' => '')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List User Groups'), array('controller' => 'user_groups', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Parent User Group'), array('controller' => 'user_groups', 'action' => 'add'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?></li> 
-				<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?></li> 
-			</ul><!-- /.list-group -->
-			
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .col-sm-3 -->
 	
-	<div id="page-content" class="col-sm-9">
+	<div id="page-content" class="col-sm-12">
 
 		<div class="userGroups index">
 		
@@ -33,7 +17,6 @@
 							<th><?php echo $this->Paginator->sort('created'); ?></th>
 							<th><?php echo $this->Paginator->sort('modified'); ?></th>
 							<th><?php echo $this->Paginator->sort('deleted'); ?></th>
-							<th class="actions"><?php echo __('Actions'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,11 +30,6 @@
 		<td><?php echo h($userGroup['UserGroup']['created']); ?>&nbsp;</td>
 		<td><?php echo h($userGroup['UserGroup']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($userGroup['UserGroup']['deleted']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $userGroup['UserGroup']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $userGroup['UserGroup']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $userGroup['UserGroup']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $userGroup['UserGroup']['id'])); ?>
-		</td>
 	</tr>
 <?php endforeach; ?>
 					</tbody>

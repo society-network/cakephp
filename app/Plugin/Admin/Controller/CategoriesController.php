@@ -43,11 +43,23 @@ class CategoriesController extends AdminAppController {
 /**
  * add method
  *
+ * @param null $parent_id
  * @return void
  */
-	public function add() {
+	public function add($parent_id = null) {
+        $this->set('parent_id', $parent_id);
+        if ($parent_id) {
+            $my_parent = $this->Category->findById($parent_id);
+            if (empty($my_parent['Category'])) {
+                throw new NotFoundException(__('Invalid parent document'));
+            } else {
+                $this->set('my_parent', $my_parent['Document']);
+            }
+        }
+
 		if ($this->request->is('post')) {
 			$this->Category->create();
+            $this->request->data['Category']['parent_id'] = $parent_id;
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('The category has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
@@ -55,8 +67,8 @@ class CategoriesController extends AdminAppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
-		$parentCategories = $this->Category->ParentCategory->find('list');
-		$this->set(compact('parentCategories'));
+		$parents = $this->Category->find('list');
+		$this->set(compact('parents'));
 	}
 
 /**
@@ -82,8 +94,8 @@ class CategoriesController extends AdminAppController {
 			$options = array('conditions' => array('Category.' . $this->Category->primaryKey => $id));
 			$this->request->data = $this->Category->find('first', $options);
 		}
-		$parentCategories = $this->Category->ParentCategory->find('list');
-		$this->set(compact('parentCategories'));
+		$parents = $this->Category->find('list');
+		$this->set(compact('parents'));
 	}
 
 /**

@@ -23,9 +23,6 @@
 
 				<fieldset>
 
-                    <div class="form-group">
-                        <?php echo $this->Form->input('parent_id', array('disabled' => isset($parent_id),'selected' => $parent_id, 'empty' => true, 'class' => 'form-control', 'label' => __('Parent'))); ?>
-                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('locale_id', array('selected' => isset($my_parent['locale_id'])?$my_parent['locale_id']:null, 'empty' => true, 'class' => 'form-control')); ?>
 					</div><!-- .form-group -->

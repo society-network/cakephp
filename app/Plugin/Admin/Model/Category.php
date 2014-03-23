@@ -35,7 +35,7 @@ class Category extends AdminAppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentCategory' => array(
+		'Parent' => array(
 			'className' => 'Category',
 			'foreignKey' => 'parent_id',
 			'conditions' => '',
@@ -50,7 +50,7 @@ class Category extends AdminAppModel {
  * @var array
  */
 	public $hasMany = array(
-		'ChildCategory' => array(
+		'Child' => array(
 			'className' => 'Category',
 			'foreignKey' => 'parent_id',
 			'dependent' => false,

@@ -26,6 +26,7 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home', 'home'));
 	Router::connect('/index', array('controller' => 'pages', 'action' => 'home', 'home'));
+    Router::connect('/contact-us', array('plugin' => 'Contactform', 'controller' => 'contactform', 'action' => 'show'));
 //    Router::redirect('/', '/home', array('status' => 302));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.

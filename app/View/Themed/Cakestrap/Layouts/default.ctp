@@ -52,7 +52,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</div><!-- /#header .container -->
 
             <div id="main_nav" class="container">
-                <?php echo $this->element('menu/top_menu'); ?>
+                <?php $current_local =  $this->Session->read('Config.locale'); ?>
+                <?php if ($current_local['code'] == 'zh-TW'): ?>
+                    <?php echo $this->element('menu/top_menu_zh-TW'); ?>
+                <?php else: ?>
+                    <?php echo $this->element('menu/top_menu'); ?>
+                <?php endif; ?></p>
             </div>
 			
 			<div id="content" class="container">

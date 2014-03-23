@@ -31,4 +31,15 @@ class AdminAppController extends AppController {
         )
     );
 
+    static $upload_errors = array(
+        UPLOAD_ERR_OK => 'OK',
+        UPLOAD_ERR_INI_SIZE => 'File Too Big',
+        UPLOAD_ERR_FORM_SIZE => 'File Too Big',
+        UPLOAD_ERR_PARTIAL => 'Upload Interrupted',
+        UPLOAD_ERR_NO_FILE => 'No File',
+        UPLOAD_ERR_NO_TMP_DIR => 'No Temp Folder',
+        UPLOAD_ERR_CANT_WRITE => 'No Writable',
+        UPLOAD_ERR_EXTENSION => 'Bad File Extension',
+    );
+
 }

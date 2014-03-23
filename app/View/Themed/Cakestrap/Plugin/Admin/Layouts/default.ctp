@@ -52,8 +52,8 @@ $cakeDescription = __d('cake_dev', 'Admin Panel');
 			</div><!-- /#header .container -->
 			
 			<div id="content" class="container">
-				<?php echo $this->Session->flash(); ?>
-				<?php echo $this->fetch('content'); ?>
+                <?php echo $this->Session->flash(); ?>
+                <?php echo $this->fetch('content'); ?>
 			</div><!-- /#content .container -->
 			
 			<div id="footer" class="container">

@@ -60,6 +60,7 @@
 		<!--td><?php //echo h($document['Document']['deleted']); ?>&nbsp;</td-->
 		<td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php echo $this->Html->link(__('New Sub'), array('action' => 'add', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $document['Document']['id']), array('class' => 'btn btn-default btn-xs')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $document['Document']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $document['Document']['id'])); ?>
 		</td>

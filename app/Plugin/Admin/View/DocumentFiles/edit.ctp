@@ -7,11 +7,7 @@
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('DocumentFile.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('DocumentFile.id'))); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('action' => 'index')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Document Translations'), array('controller' => 'document_translations', 'action' => 'index')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('controller' => 'document_translations', 'action' => 'add')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('Back To Document'), array('controller' => 'documents', 'action' => 'edit',  $this->Form->value('DocumentFile.document_id'))); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -34,9 +30,9 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('document_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
-					<div class="form-group">
-						<?php echo $this->Form->input('document_translation_id', array('class' => 'form-control')); ?>
-					</div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('document_translation_id', array('class' => 'form-control')); ?>
+                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->

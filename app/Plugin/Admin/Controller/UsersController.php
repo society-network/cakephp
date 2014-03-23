@@ -18,7 +18,7 @@ class UsersController extends AdminAppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to edit, good for password recovery.
-        $this->Auth->allow('edit');
+        //$this->Auth->allow('edit');
     }
 
 /**

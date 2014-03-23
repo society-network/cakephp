@@ -9,6 +9,7 @@
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Document.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Document.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Sub Document'), array('controller' => 'documents', 'action' => 'add', $this->Form->value('Document.id'))); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -30,25 +31,7 @@
         </div><!-- /.actions -->
 
         <div class="actions">
-            <h4><?php echo __('Files'); ?></h4>
-            <ul class="list-group">
-                <?php foreach ($documentFiles as $doc_file): ?>
-                    <li class="list-group-item"><a target="_blank" href="<?php echo '/' . UPLOAD_FOLDER . '/' . urlencode(basename($doc_file['DocumentFile']['path'])); ?>"><?php echo $doc_file['DocumentFile']['name']; ?></a></li>
-                <?php endforeach; ?>
-            </ul><!-- /.list-group -->
-
-            <div class="users form">
-                <?php echo $this->Form->create('DocumentFile', array('type' => 'file', 'role' => 'form')); ?>
-                <fieldset>
-                    <div class="form-group">
-                        <?php echo $this->Form->hidden('DocumentFile.is_login_required', array('value' => isset($this->data['Document']['is_login_required'])?1:0)); ?>
-                        <?php echo $this->Form->input('DocumentFile.new_file', array('type' => 'file')); ?>
-                    </div><!-- .form-group -->
-                    <?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
-                </fieldset>
-                <?php echo $this->Form->end(); ?>
-            </div>
-
+            <?php echo $this->element('single_upload_form'); ?>
         </div><!-- /.actions -->
 
 	</div><!-- /#sidebar .col-sm-3 -->
@@ -69,6 +52,9 @@
 					<div class="form-group">
 						<?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('parent_id', array('empty' => true, 'class' => 'form-control', 'label' => __('Parent'))); ?>
+                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
 					</div><!-- .form-group -->
@@ -111,6 +97,11 @@
 			<?php echo $this->Form->end(); ?>
 
 		</div><!-- /.form -->
+
+        <div class="documentFiles list">
+            <h2><?php echo __('Document Files'); ?></h2>
+            <?php echo $this->element('list_files', array('documentFiles' > $documentFiles)); ?>
+        </div>
 			
 	</div><!-- /#page-content .col-sm-9 -->
 

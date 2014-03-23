@@ -1,6 +1,7 @@
 <?php
 App::uses('AdminAppController', 'Admin.Controller');
 App::uses('HtmlHelper', 'View/Helper');
+App::uses('Folder', 'Utility');
 /**
  * Documents Controller
  *
@@ -41,26 +42,40 @@ class DocumentsController extends AdminAppController {
 		$this->set('document', $this->Document->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+    /**
+     * add method
+     *
+     * @param null $parent_id
+     * @return void
+     */
+	public function add($parent_id = null) {
+        $this->set('parent_id', $parent_id);
+        if ($parent_id) {
+            $my_parent = $this->Document->findById($parent_id);
+            if (empty($my_parent['Document'])) {
+                throw new NotFoundException(__('Invalid parent document'));
+            } else {
+                $this->set('my_parent', $my_parent['Document']);
+            }
+        }
+
 		if ($this->request->is('post')) {
 			$this->Document->create();
             $this->request->data['Document']['user_id'] = $this->Auth->user('id');
+            $this->request->data['Document']['parent_id'] = $parent_id;
 			if ($this->Document->save($this->request->data)) {
+                $new_id = $new_id = $this->Document->getLastInsertId();
 				$this->Session->setFlash(__('The document has been saved'), 'flash/success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'edit', $new_id));
 			} else {
 				$this->Session->setFlash(__('The document could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
+		$parents = $this->Document->find('list');
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
-		$this->set(compact('users', 'locales', 'categories'));
+		$this->set(compact('parents', 'users', 'locales', 'categories'));
 	}
 
 /**
@@ -83,10 +98,10 @@ class DocumentsController extends AdminAppController {
 		}
         if (isset($this->request->data['DocumentFile']['new_file'])) {
             $new_file = $this->request->data['DocumentFile']['new_file'];
-            if ($this->request->is('post') && $new_file['tmp_name'] && is_uploaded_file($new_file['tmp_name']) && $new_file['error'] == 0) {
+            if ($this->request->is('post') && $new_file['tmp_name'] && is_uploaded_file($new_file['tmp_name']) && $new_file['error'] == UPLOAD_ERR_OK) {
+                $dir = new Folder(WWW_ROOT . UPLOAD_FOLDER . DS . $id, true, 0755);
                 $this->DocumentFile->create();
-                $filename = basename($new_file['name']);
-                $path = WWW_ROOT . UPLOAD_FOLDER . DS . time() . '_' . $filename;
+                $path = $dir->pwd() . DS . time() . '_' . $new_file['name'];
                 $new_doc_file = array('DocumentFile' => array(
                     'user_id' => $this->Auth->user('id'),
                     'document_id' => $id,
@@ -97,12 +112,13 @@ class DocumentsController extends AdminAppController {
                     'is_login_required' => $this->request->data['DocumentFile']['is_login_required'],
                 ));
                 if (move_uploaded_file($new_file['tmp_name'], $path) && $this->DocumentFile->save($new_doc_file)) {
+                    chmod($path, 0644);
                     $this->Session->setFlash(__('File uploaded successful'), 'flash/success');
                 } else {
                     $this->Session->setFlash(__('File cannot be saved. Please, try again.'), 'flash/error');
                 }
-            } elseif ($new_file['error'] != 4 && $new_file['error'] != 0) {
-                $this->Session->setFlash(__('File upload failed, error code %s.', $new_file['error']), 'flash/error');
+            } elseif ($new_file['error'] != UPLOAD_ERR_NO_FILE && $new_file['error'] != UPLOAD_ERR_OK) {
+                $this->Session->setFlash(__('File upload failed, error %s.',AdminAppController::$upload_errors[$new_file['error']]), 'flash/error');
             }
         }
 		elseif (($this->request->is('post') || $this->request->is('put'))
@@ -139,12 +155,13 @@ class DocumentsController extends AdminAppController {
             $default_slug = Inflector::slug(strtolower(trim($this->request->data['Document']['name'])), '-');
             $this->set('default_slug', $default_slug);
 		//}
+        $parents = $this->Document->find('list');
 		$users = $this->Document->User->find('list');
 		$locales = $this->Document->Locale->find('list');
 		$categories = $this->Document->Category->find('list');
         $options = array('conditions' => array('DynamicRoute.document_id' => $id));
         $dynamicRoutes = $this->DynamicRoute->find('first', $options);
-		$this->set(compact('users', 'locales', 'categories', 'dynamicRoutes'));
+		$this->set(compact('parents', 'users', 'locales', 'categories', 'dynamicRoutes'));
 
         $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => 0,
             'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
@@ -173,10 +190,26 @@ class DocumentsController extends AdminAppController {
 			throw new MethodNotAllowedException();
 		}
 		$this->Document->id = $id;
+        $files = array();
+        $file_ids = array();
 		if (!$this->Document->exists()) {
 			throw new NotFoundException(__('Invalid document'));
-		}
+		} else {
+            $documentFiles = $this->Document->DocumentFile->find('all');
+            foreach ($documentFiles as $docFile) {
+                $files[] = $docFile['DocumentFile'];
+            }
+        }
 		if ($this->Document->delete()) {
+            if ($files) {
+                foreach ($files as $file) {
+                    $to_delete = new File($file['path']);
+                    $to_delete->delete();
+                    $file_ids[] = $file['id'];
+                }
+                $this->Document->DocumentFile->deleteAll(array('DocumentFile.id' => $file_ids), false);
+            }
+            $this->Document->DocumentTranslation->deleteAll(array('DocumentTranslation.document_id' => $id), false);
 			$this->Session->setFlash(__('Document deleted'), 'flash/success');
 			$this->redirect(array('action' => 'index'));
 		}

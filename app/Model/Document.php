@@ -59,6 +59,13 @@ class Document extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+        'Parent' => array(
+            'className' => 'Document',
+            'foreignKey' => 'parent_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',

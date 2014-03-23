@@ -110,6 +110,8 @@ CakeLog::config('error', array(
 CakePlugin::load('DynamicRoute');
 CakePlugin::load('Admin', array('bootstrap' => false, 'routes' => false));
 
-Configure::write('Config.language', 'en');
+Configure::write('Config.locale', array('id' => 1, 'name' => 'English', 'code' => 'en-AU'));
 
 define('UPLOAD_FOLDER', 'uploads');
+
+CakePlugin::load('Contactform', array('routes' => false));

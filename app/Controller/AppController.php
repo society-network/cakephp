@@ -59,8 +59,10 @@ class AppController extends Controller {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('*');
-        if ($this->Session->check('Config.language')) {
-            Configure::write('Config.language', $this->Session->read('Config.language'));
+        if ($this->Session->check('Config.locale')) {
+            Configure::write('Config.locale', $this->Session->read('Config.locale'));
+        } else {
+            $this->Session->write('Config.locale',  Configure::read('Config.locale'));
         }
     }
 }

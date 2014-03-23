@@ -42,11 +42,6 @@
 			<?php echo h($document['Document']['id']); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Parent Document'); ?></strong></td>
-		<td>
-			<?php echo $this->Html->link($document['ParentDocument']['name'], array('controller' => 'documents', 'action' => 'view', $document['ParentDocument']['id']), array('class' => '')); ?>
-			&nbsp;
-		</td>
 </tr><tr>		<td><strong><?php echo __('User'); ?></strong></td>
 		<td>
 			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'view', $document['User']['id']), array('class' => '')); ?>

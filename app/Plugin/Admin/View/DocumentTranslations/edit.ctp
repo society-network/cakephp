@@ -31,6 +31,10 @@
 
         </div><!-- /.actions -->
 
+        <div class="actions">
+            <?php echo $this->element('single_upload_form'); ?>
+        </div><!-- /.actions -->
+
 	</div><!-- /#sidebar .col-sm-3 -->
 	
 	<div id="page-content" class="col-sm-9">
@@ -81,6 +85,11 @@
 			<?php echo $this->Form->end(); ?>
 
 		</div><!-- /.form -->
+
+        <div class="documentFiles list">
+            <h2><?php echo __('Document Files'); ?></h2>
+            <?php echo $this->element('list_files', array('documentFiles' > $documentFiles)); ?>
+        </div>
 			
 	</div><!-- /#page-content .col-sm-9 -->
 

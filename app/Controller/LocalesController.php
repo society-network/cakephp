@@ -15,6 +15,11 @@ class LocalesController extends AppController {
  */
 	public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('set_by_code');
+    }
+
 /**
  * index method
  *
@@ -39,5 +44,17 @@ class LocalesController extends AppController {
 		$options = array('conditions' => array('Locale.' . $this->Locale->primaryKey => $id));
 		$this->set('locale', $this->Locale->find('first', $options));
 	}
+
+    public function set_by_code($code = null) {
+        $this->autoRender = false;
+        if ($code) {
+            $options = array('conditions' => array('Locale.code'=> $code), 'recursive' => 0);
+            $locale = $this->Locale->find('first', $options);
+            if (!empty($locale['Locale'])) {
+                $this->Session->write('Config.locale', $locale['Locale']);
+            }
+        }
+        $this->redirect($this->request->referer());
+    }
 
 }

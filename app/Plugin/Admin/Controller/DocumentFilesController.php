@@ -111,6 +111,8 @@ class DocumentFilesController extends AdminAppController {
             if (isset($file['DocumentFile']['path']) && file_exists($file['DocumentFile']['path'])) {
                 $to_delete = new File($file['DocumentFile']['path']);
                 $deletable = $to_delete->writable();
+            } else {
+                $deletable = true;
             }
         }
 		if ($deletable && $this->DocumentFile->delete()) {

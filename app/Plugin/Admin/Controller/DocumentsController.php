@@ -86,7 +86,7 @@ class DocumentsController extends AdminAppController {
         if (isset($this->request->data['DocumentFile']['new_file'])) {
             $new_file = $this->request->data['DocumentFile']['new_file'];
             if ($this->request->is('post') && $new_file['tmp_name'] && is_uploaded_file($new_file['tmp_name']) && $new_file['error'] == UPLOAD_ERR_OK) {
-                $dir = new Folder(WWW_ROOT . UPLOAD_FOLDER . DS . 'documents', true, 0755);
+                $dir = new Folder(WWW_ROOT . UPLOAD_FOLDER, true, 0775);
                 $this->DocumentFile->create();
                 $path = $dir->pwd() . DS . time() . '_' . $new_file['name'];
                 $new_doc_file = array('DocumentFile' => array(
@@ -99,7 +99,7 @@ class DocumentsController extends AdminAppController {
                     'is_login_required' => $this->request->data['DocumentFile']['is_login_required'],
                 ));
                 if (move_uploaded_file($new_file['tmp_name'], $path) && $this->DocumentFile->save($new_doc_file)) {
-                    chmod($path, 0644);
+                    chmod($path, 0664);
                     $this->Session->setFlash(__('File uploaded successful'), 'flash/success');
                 } else {
                     $this->Session->setFlash(__('File cannot be saved. Please, try again.'), 'flash/error');

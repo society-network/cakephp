@@ -38,7 +38,10 @@ $cakeDescription = __d('cake_dev', 'Admin Panel');
 			
 			echo $this->Html->script('libs/jquery-1.10.2.min');
 			echo $this->Html->script('libs/bootstrap.min');
-			
+			echo $this->Html->script('ckeditor/ckeditor');
+			echo $this->Html->script('ckeditor/adapters/jquery');
+			echo $this->Html->script('admin_main');
+
 			echo $this->fetch('script');
 		?>
 	</head>

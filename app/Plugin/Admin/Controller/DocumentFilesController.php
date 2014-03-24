@@ -116,9 +116,9 @@ class DocumentFilesController extends AdminAppController {
 		if ($deletable && $this->DocumentFile->delete()) {
 			$this->Session->setFlash(__('Document file deleted'), 'flash/success');
             if (strpos($this->request->referer(), $this->request->here) !== false) {
-                $this->redirect($this->request->referer());
-            } else {
                 $this->redirect(array('action' => 'index'));
+            } else {
+                $this->redirect($this->request->referer());
             }
 		}
 		$this->Session->setFlash(__('Document file was not deleted'), 'flash/error');

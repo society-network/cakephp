@@ -10,7 +10,7 @@
         <tbody>
         <?php foreach ($documentFiles as $documentFile): ?>
         <tr>
-            <td><a target="_blank" href="<?php echo '/uploads/' . $documentFile['DocumentFile']['document_id'] . '/' . urlencode(basename($documentFile['DocumentFile']['path'])); ?>"><?php echo h($documentFile['DocumentFile']['name']); ?></a>&nbsp;</td>
+            <td><a target="_blank" href="<?php echo '/uploads/documents/' . urlencode(basename($documentFile['DocumentFile']['path'])); ?>"><?php echo h($documentFile['DocumentFile']['name']); ?></a>&nbsp;</td>
             <td><?php echo h($documentFile['DocumentFile']['type']); ?>&nbsp;</td>
             <td class="actions">
                 <?php //echo $this->Html->link(__('View'), array('controller' => 'document_files', 'action' => 'view', $documentFile['DocumentFile']['id']), array('class' => 'btn btn-default btn-xs')); ?>

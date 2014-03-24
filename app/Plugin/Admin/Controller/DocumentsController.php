@@ -86,7 +86,7 @@ class DocumentsController extends AdminAppController {
         if (isset($this->request->data['DocumentFile']['new_file'])) {
             $new_file = $this->request->data['DocumentFile']['new_file'];
             if ($this->request->is('post') && $new_file['tmp_name'] && is_uploaded_file($new_file['tmp_name']) && $new_file['error'] == UPLOAD_ERR_OK) {
-                $dir = new Folder(WWW_ROOT . UPLOAD_FOLDER . DS . $id, true, 0755);
+                $dir = new Folder(WWW_ROOT . UPLOAD_FOLDER . DS . 'documents', true, 0755);
                 $this->DocumentFile->create();
                 $path = $dir->pwd() . DS . time() . '_' . $new_file['name'];
                 $new_doc_file = array('DocumentFile' => array(

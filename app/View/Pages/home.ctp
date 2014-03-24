@@ -1,3 +1,4 @@
+<div class="vspace-10 clearfix"></div>
 <div class="row">
     <div class="col-md-12">
         <div id="slideshow0" class="carousel slide" data-ride="carousel">

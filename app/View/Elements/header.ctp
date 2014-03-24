@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        <a href="/"><?php echo $this->Html->image('uip.png', array('alt' => 'United Investment Properties')); ?></a>
+        <a href="/"><?php echo $this->Html->image('uip.png', array('class' => 'img-responsive', 'alt' => 'United Investment Properties')); ?></a>
     </div>
     <div class="col-md-6 text-right">
         <?php $current_local =  $this->Session->read('Config.locale'); ?>

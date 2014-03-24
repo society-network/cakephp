@@ -48,7 +48,7 @@ class LocalesController extends AppController {
     public function set_by_code($code = null) {
         $this->autoRender = false;
         if ($code) {
-            $options = array('conditions' => array('Locale.code'=> $code), 'recursive' => 0);
+            $options = array('conditions' => array('Locale.code'=> $code), 'recursive' => -1);
             $locale = $this->Locale->find('first', $options);
             if (!empty($locale['Locale'])) {
                 $this->Session->write('Config.locale', $locale['Locale']);

@@ -15,12 +15,17 @@ class CategoriesController extends AppController {
  */
 	public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('display');
+    }
+
 /**
  * index method
  *
  * @return void
  */
-	public function index($name = null) {
+	public function index() {
 		$this->Category->recursive = 0;
 		$this->set('categories', $this->paginate());
 	}
@@ -39,5 +44,16 @@ class CategoriesController extends AppController {
 		$options = array('conditions' => array('Category.' . $this->Category->primaryKey => $id));
 		$this->set('category', $this->Category->find('first', $options));
 	}
+
+    public function display($id = null) {
+        if (!$this->Category->exists($id)) {
+            throw new NotFoundException(__('Invalid category'));
+        }
+        $locale = $this->Session->read('Config.locale');
+        $locale_id = $locale['id'];
+        $documents = $this->Category->list_documents($id, $locale_id);
+        //debug($documents);
+        $this->set('documents', $documents);
+    }
 
 }

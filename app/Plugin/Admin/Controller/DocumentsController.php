@@ -149,7 +149,7 @@ class DocumentsController extends AdminAppController {
         $dynamicRoutes = $this->DynamicRoute->find('first', $options);
 		$this->set(compact('users', 'locales', 'categories', 'dynamicRoutes'));
 
-        $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => 0,
+        $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => -1,
             'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
         $documentTranslations = $this->DocumentTranslation->find('all', $options);
         $available_locales = array();
@@ -158,7 +158,7 @@ class DocumentsController extends AdminAppController {
         }
         $this->set('available_locales', $available_locales);
 
-        $options = array('conditions' => array('DocumentFile.document_id' => $id), 'recursive' => 0);
+        $options = array('conditions' => array('DocumentFile.document_id' => $id), 'recursive' => -1);
         $documentFiles = $this->DocumentFile->find('all', $options);
         $this->set('documentFiles', $documentFiles);
 	}

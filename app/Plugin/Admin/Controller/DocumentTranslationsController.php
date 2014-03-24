@@ -144,7 +144,7 @@ class DocumentTranslationsController extends AdminAppController {
         }
         $this->set('available_locales', $available_locales);
 
-        $options = array('conditions' => array('DocumentFile.document_translation_id' => $id), 'recursive' => 0);
+        $options = array('conditions' => array('DocumentFile.document_translation_id' => $id), 'recursive' => -1);
         $documentFiles = $this->DocumentFile->find('all', $options);
         $this->set('documentFiles', $documentFiles);
 	}
@@ -166,7 +166,7 @@ class DocumentTranslationsController extends AdminAppController {
 		if (!$this->DocumentTranslation->exists()) {
 			throw new NotFoundException(__('Invalid document translation'));
 		} else {
-            $options = array('conditions' => array('DocumentFile.document_translation_id' => $id), 'recursive' => 0);
+            $options = array('conditions' => array('DocumentFile.document_translation_id' => $id), 'recursive' => -1);
             $documentFiles = $this->DocumentTranslation->DocumentFile->find('all', $options);
         }
 		if ($this->DocumentTranslation->delete()) {

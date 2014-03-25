@@ -52,7 +52,6 @@ class CategoriesController extends AppController {
         $locale = $this->Session->read('Config.locale');
         $locale_id = $locale['id'];
         $documents = $this->Category->list_documents($id, $locale_id);
-        //debug($documents);
         $this->set('documents', $documents);
     }
 

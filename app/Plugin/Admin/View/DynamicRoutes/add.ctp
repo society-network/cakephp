@@ -6,7 +6,7 @@
 		<div class="actions">
 
 			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Dynamic Routes'), array('action' => 'index')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List URL Routing'), array('action' => 'index')); ?></li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -15,7 +15,7 @@
 	
 	<div id="page-content" class="col-sm-9">
 
-		<h2><?php echo __('Add Dynamic Route'); ?></h2>
+		<h2><?php echo __('Add URL Routing'); ?></h2>
 
 		<div class="dynamicRoutes form">
 		
@@ -24,8 +24,11 @@
 				<fieldset>
 
 					<div class="form-group">
-						<?php echo $this->Form->input('spec', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('slug', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
+                    <div class="form-group">
+                        <?php echo $this->Form->input('spec', array('class' => 'form-control')); ?>
+                    </div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('active', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->

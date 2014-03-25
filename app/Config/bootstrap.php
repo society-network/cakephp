@@ -111,7 +111,7 @@ CakePlugin::load('DynamicRoute');
 CakePlugin::load('Admin', array('bootstrap' => false, 'routes' => false));
 
 Configure::write('Config.locale', array('id' => 1, 'name' => 'English', 'code' => 'en-AU'));
-//Configure::write('Config.language', 'eng');
+Configure::write('Config.language', 'en-AU');
 
 define('UPLOAD_FOLDER', 'uploads');
 

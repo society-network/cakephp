@@ -42,4 +42,7 @@ class AdminAppController extends AppController {
         UPLOAD_ERR_EXTENSION => 'Bad File Extension',
     );
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+    }
 }

@@ -17,8 +17,7 @@ class UsersController extends AdminAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        // Allow users to edit, good for password recovery.
-        //$this->Auth->allow('edit');
+        $this->Auth->allow('logout');
     }
 
 /**
@@ -131,6 +130,11 @@ class UsersController extends AdminAppController {
     public function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
+                if ($this->Auth->user('user_group_id') != '1') {
+                    $this->Auth->logout();
+                    $this->Session->setFlash(__('User not allowed'), 'flash/error');
+                    return $this->redirect($this->Auth->logout());
+                }
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Session->setFlash(__('Invalid username or password, try again'));

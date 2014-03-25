@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav">
                     <?php foreach ($main_menu_items as $menu_item): ?>
                         <li class="dropdown">
-                            <a href="<?php echo $menu_item['Menu']['url']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $menu_item['Menu']['name']; ?>
+                            <a href="<?php echo $menu_item['Menu']['url']; ?>" <?php if ($menu_item['children']): ?>class="dropdown-toggle" data-toggle="dropdown"<?php endif; ?>><?php echo $menu_item['Menu']['name']; ?>
                                 <?php if ($menu_item['children']): ?>
                                     <b class="caret"></b>
                                 <?php endif; ?>

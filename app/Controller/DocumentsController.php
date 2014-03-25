@@ -15,6 +15,11 @@ class DocumentsController extends AppController {
  */
 	public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('view');
+    }
+
 /**
  * index method
  *
@@ -36,8 +41,26 @@ class DocumentsController extends AppController {
 		if (!$this->Document->exists($id)) {
 			throw new NotFoundException(__('Invalid document'));
 		}
+        $locale_id = $this->Session->read('Config.locale.id');
 		$options = array('conditions' => array('Document.' . $this->Document->primaryKey => $id));
-		$this->set('document', $this->Document->find('first', $options));
+        $document = $this->Document->find('first', $options);
+        $tran_count = count($document['DocumentTranslation']);
+        for ($i = 0; $i < $tran_count; $i++) {
+            if ($document['DocumentTranslation'][$i]['locale_id'] != $locale_id) {
+                unset($document['DocumentTranslation'][$i]);
+            }
+        }
+        if ($document['DocumentTranslation']) {
+            $document['DocumentTranslation'] = $document['DocumentTranslation'][0];
+        }
+        //debug($document);
+        $cover_img = !empty($document['DocumentTranslation']['cover_img'])?$document['DocumentTranslation']['cover_img']:$document['Document']['cover_img'];
+        if ($cover_img) {
+            $this->set('cover_img', explode('|', $cover_img));
+        }
+        $this->set('is_login_required', $document['Document']['is_login_required']);
+		$this->set('name', !empty($document['DocumentTranslation']['name'])?$document['DocumentTranslation']['name']:$document['Document']['name']);
+		$this->set('body', !empty($document['DocumentTranslation']['body'])?$document['DocumentTranslation']['body']:$document['Document']['body']);
 	}
 
 }

@@ -26,7 +26,7 @@
                     <li><?php echo $this->Html->link(__('Users'), array('controller' => 'users', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link(__('Groups'), array('controller' => 'user_groups', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link(__('Locales'), array('controller' => 'locales', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link(__('Dynamic Routes'), array('controller' => 'dynamic_routes', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link(__('URL Routing'), array('controller' => 'dynamic_routes', 'action' => 'index')); ?></li>
                 </ul>
             </li>
             <li><?php

@@ -77,7 +77,7 @@ class DocumentsController extends AdminAppController {
         $this->loadModel('DocumentTranslation');
         $this->loadModel('DocumentFile');
         $spec = array('plugin' => null, 'controller' => 'documents', 'action' => 'view', $id);
-        $spec = serialize($spec);
+        $spec = json_encode($spec);
 
         $this->Document->id = $id;
 		if (!$this->Document->exists($id)) {

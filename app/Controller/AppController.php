@@ -61,17 +61,31 @@ class AppController extends Controller {
         $this->Auth->allow('*');
         if (!$this->Session->check('Config.locale')) {
             $this->Session->write('Config.locale',  Configure::read('Config.locale'));
+            Configure::write('Config.language', Configure::read('Config.locale.code'));
             //Configure::write('Config.locale', $this->Session->read('Config.locale'));
         } else {
+            Configure::write('Config.language', $this->Session->read('Config.locale.code'));
             //$this->Session->write('Config.locale',  Configure::read('Config.locale'));
         }
 
         // load menu
         $this->loadModel('Menu');
+        $locale_id = $this->Session->read('Config.locale.id');
         $options = array('conditions' => array('Menu.active' => 1,
-            'Menu.locale_id' => $this->Session->read('Config.locale.id')
+            'Menu.locale_id' => $locale_id
         ), 'order' => array('Menu.lft ASC'), 'recursive' => -1);
         $main_menu_items = $this->Menu->find('threaded', $options);
-        $this->set('main_menu_items', $main_menu_items);
+        $url = $this->request->here(false);
+        if (strpos($url, '/locales/set_by_code') === false && strpos($url, '/admin') === false) {
+            $options = array('conditions' => array('Menu.url' => $url,
+                'Menu.locale_id' => $locale_id, 'Menu.active' => 1), 'recursive' => 0);
+            $current_menu = $this->Menu->find('first', $options);
+            if ($current_menu) {
+                $sub_menus = $this->Menu->children($current_menu['Menu']['parent_id']);
+            } else {
+                $sub_menus = null;
+            }
+            $this->set(compact('main_menu_items', 'current_menu', 'sub_menus'));
+        }
     }
 }

@@ -1,4 +1,5 @@
 <div class="row">
+    <div class="col-md-12"><div id="footer-line"></div></div>
     <small>
         <div class="col-md-4">
             <p>&copy; <?php echo date('Y') ?> <a href="#">United Investment Properties Pty Ltd</a></p>

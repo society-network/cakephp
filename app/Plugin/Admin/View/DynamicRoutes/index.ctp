@@ -6,6 +6,7 @@
 		<div class="actions">
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
+				<li class="list-group-item"><?php echo $this->Html->link(__('New URL Routing'), array('action' => 'add'), array('class' => '')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?></li>
 			</ul><!-- /.list-group -->
 
@@ -17,7 +18,7 @@
 
 		<div class="dynamicRoutes index">
 		
-			<h2><?php echo __('Dynamic Routes'); ?></h2>
+			<h2><?php echo __('URL Routing'); ?></h2>
 			
 			<div class="table-responsive">
 				<table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
@@ -36,11 +37,10 @@
 		<td><?php echo $this->Html->link($dynamicRoute['Document']['name'], array('controller' => 'documents', 'action' => 'edit', $dynamicRoute['Document']['id'])); ?></td>
 		<td><?php echo h($dynamicRoute['DynamicRoute']['slug']); ?>&nbsp;</td>
 		<!--td><?php //echo h($dynamicRoute['DynamicRoute']['spec']); ?>&nbsp;</td-->
-		<td><?php echo h($dynamicRoute['DynamicRoute']['active']); ?>&nbsp;</td>
+		<td><?php echo h(empty($dynamicRoute['DynamicRoute']['active'])?'No':'Yes'); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('controller' => 'documents', 'action' => 'edit', $dynamicRoute['DynamicRoute']['document_id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php //echo $this->Html->link(__('Edit'), array('action' => 'edit', $dynamicRoute['DynamicRoute']['slug']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $dynamicRoute['DynamicRoute']['slug']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $dynamicRoute['DynamicRoute']['slug'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $dynamicRoute['DynamicRoute']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $dynamicRoute['DynamicRoute']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $dynamicRoute['DynamicRoute']['slug'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

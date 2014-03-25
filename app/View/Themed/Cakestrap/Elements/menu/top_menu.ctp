@@ -12,26 +12,22 @@
             </div><!-- /.navbar-header -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Real Estate<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/real-estate">Overview</a></li>
-                            <li><a href="#">Off Plan</a></li>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Commercial</a></li>
-                            <li><a href="#">Site</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Business<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Retails</a></li>
-                            <li><a href="#">Wholesale</a></li>
-                            <li><a href="#">Franchise</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Career</a></li>
-                    <li><a href="/contact-us">Contact Us</a></li>
+                    <?php foreach ($main_menu_items as $menu_item): ?>
+                        <li class="dropdown">
+                            <a href="<?php echo $menu_item['Menu']['url']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $menu_item['Menu']['name']; ?>
+                                <?php if ($menu_item['children']): ?>
+                                    <b class="caret"></b>
+                                <?php endif; ?>
+                            </a>
+                            <?php if ($menu_item['children']): ?>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($menu_item['children'] as $sub_menu): ?>
+                                    <li><a href="<?php echo $sub_menu['Menu']['url']; ?>"><?php echo $sub_menu['Menu']['name']; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
                     <li><?php
                         if (AuthComponent::user('id')) {
                             echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout'));

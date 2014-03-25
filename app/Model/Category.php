@@ -87,7 +87,7 @@ class Category extends AppModel {
      * @return mixed
      */
     public function list_documents($category_id, $locale_id = null) {
-        $options = array('conditions' => array('Document.category_id' => $category_id), 'recursive' => 0);
+        $options = array('conditions' => array('Document.category_id' => $category_id), 'recursive' => -1);
         $documents = $this->Document->find('all', $options);
         if ($locale_id) {
             $document_ids = array();

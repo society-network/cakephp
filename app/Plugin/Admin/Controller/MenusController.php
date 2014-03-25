@@ -55,6 +55,9 @@ class MenusController extends AdminAppController {
 				$this->Session->setFlash(__('The menu could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
+        $parents = $this->Menu->Parent->find('list');
+        $locales = $this->Menu->Locale->find('list');
+        $this->set(compact('parents', 'locales'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class MenusController extends AdminAppController {
 			$options = array('conditions' => array('Menu.' . $this->Menu->primaryKey => $id));
 			$this->request->data = $this->Menu->find('first', $options);
 		}
+        $parents = $this->Menu->Parent->find('list');
+        $locales = $this->Menu->Locale->find('list');
+        $this->set(compact('parents', 'locales'));
 	}
 
 /**
@@ -98,10 +104,24 @@ class MenusController extends AdminAppController {
 		if (!$this->Menu->exists()) {
 			throw new NotFoundException(__('Invalid menu'));
 		}
-		if ($this->Menu->delete()) {
+		if ($this->Menu->removeFromTree($id, true)) {
 			$this->Session->setFlash(__('Menu deleted'), 'flash/success');
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->Session->setFlash(__('Menu was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
-	}}
+	}
+
+    /**
+     * Rebuild the menu tree if there is error.
+     *
+     * @param string $mode
+     * @param null $missingParentAction
+     */
+    public function recover($mode = 'parent', $missingParentAction = null) {
+        $this->Menu->recover($mode, $missingParentAction);
+        $this->Session->setFlash(__('Menu Recovered'), 'flash/success');
+        $this->redirect($this->request->referer());
+    }
+
+}

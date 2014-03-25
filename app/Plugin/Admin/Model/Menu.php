@@ -13,6 +13,13 @@ class Menu extends AdminAppModel {
  */
 	public $displayField = 'name';
 
+    /**
+     * Tree Behaviors
+     *
+     * @var array
+     */
+    public $actsAs = array('Tree');
+
 /**
  * Validation rules
  *
@@ -60,4 +67,47 @@ class Menu extends AdminAppModel {
 			),
 		),
 	);
+
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
+    public $belongsTo = array(
+        'Parent' => array(
+            'className' => 'Menu',
+            'foreignKey' => 'parent_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'Locale' => array(
+            'className' => 'Locale',
+            'foreignKey' => 'locale_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'Child' => array(
+            'className' => 'Menu',
+            'foreignKey' => 'parent_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
 }

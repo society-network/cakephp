@@ -126,7 +126,7 @@ class DocumentTranslationsController extends AdminAppController {
 			$this->request->data = $this->DocumentTranslation->find('first', $options);
 		//}
         $options = array('conditions' => array('Document.id' => $this->request->data['DocumentTranslation']['document_id']),
-            'recursive' => 0,
+            'recursive' => -1,
             'fields' => array('Document.id', 'Document.locale_id'));
 		$parentDocuments = $this->Document->find('first', $options);
 		$documents = $this->DocumentTranslation->Document->find('list');
@@ -135,7 +135,7 @@ class DocumentTranslationsController extends AdminAppController {
 		$this->set(compact('parentDocuments', 'documents', 'locales', 'users'));
 
         $options = array('conditions' => array('DocumentTranslation.document_id' => $this->request->data['DocumentTranslation']['document_id']),
-            'recursive' => 0,
+            'recursive' => -1,
             'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
         $documentTranslations = $this->DocumentTranslation->find('all', $options);
         $available_locales = array();

@@ -27,13 +27,13 @@
 						<?php echo $this->Form->input('parent_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('lft', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('lft', array('class' => 'form-control', 'label' => __('Previous Item'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('rght', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('rght', array('class' => 'form-control', 'label' => __('Next Item'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
@@ -45,7 +45,7 @@
 						<?php echo $this->Form->input('active', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('deleted', array('class' => 'form-control')); ?>
+						<?php //echo $this->Form->input('deleted', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 
 					<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>

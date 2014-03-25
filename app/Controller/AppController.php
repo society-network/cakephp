@@ -65,5 +65,13 @@ class AppController extends Controller {
         } else {
             //$this->Session->write('Config.locale',  Configure::read('Config.locale'));
         }
+
+        // load menu
+        $this->loadModel('Menu');
+        $options = array('conditions' => array('Menu.active' => 1,
+            'Menu.locale_id' => $this->Session->read('Config.locale.id')
+        ), 'order' => array('Menu.lft ASC'), 'recursive' => -1);
+        $main_menu_items = $this->Menu->find('threaded', $options);
+        $this->set('main_menu_items', $main_menu_items);
     }
 }

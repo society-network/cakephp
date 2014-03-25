@@ -8,6 +8,7 @@
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Menu'), array('action' => 'add'), array('class' => '')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Menus'), array('controller' => 'menus', 'action' => 'index'), array('class' => '')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('Recover Menus'), array('controller' => 'menus', 'action' => 'recover'), array('class' => '')); ?></li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -27,8 +28,8 @@
 							<th><?php echo $this->Paginator->sort('id'); ?></th>
 							<th><?php echo $this->Paginator->sort('parent_id'); ?></th>
 							<!--th><?php //echo $this->Paginator->sort('lft'); ?></th-->
-							<!--th><?php //echo $this->Paginator->sort('rght'); ?></th->
-							<th><?php echo $this->Paginator->sort('locale_id'); ?></th>
+							<!--th><?php //echo $this->Paginator->sort('rght'); ?></th-->
+							<th><?php echo $this->Paginator->sort('locale_id', h('Language')); ?></th>
 							<th><?php echo $this->Paginator->sort('name'); ?></th>
 							<th><?php echo $this->Paginator->sort('url'); ?></th>
 							<th><?php echo $this->Paginator->sort('active'); ?></th>
@@ -42,13 +43,13 @@
 <?php foreach ($menus as $menu): ?>
 	<tr>
 		<td><?php echo h($menu['Menu']['id']); ?>&nbsp;</td>
-		<td><?php echo h($menu['Menu']['parent_id']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($menu['Parent']['name'], array('controller' => 'menu', 'action' => 'edit', $menu['Menu']['id'])); ?>&nbsp;</td>
 		<!--td><?php //echo h($menu['Menu']['lft']); ?>&nbsp;</td-->
 		<!--td><?php //echo h($menu['Menu']['rght']); ?>&nbsp;</td-->
-		<td><?php echo h($menu['Menu']['locale_id']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($menu['Locale']['name'], array('controller' => 'locales', 'action' => 'edit', $menu['Menu']['locale_id'])); ?>&nbsp;</td>
 		<td><?php echo h($menu['Menu']['name']); ?>&nbsp;</td>
 		<td><?php echo h($menu['Menu']['url']); ?>&nbsp;</td>
-		<td><?php echo h($menu['Menu']['active']); ?>&nbsp;</td>
+		<td><?php echo h(empty($menu['Menu']['active'])?'No':'Yes'); ?>&nbsp;</td>
 		<!--td><?php //echo h($menu['Menu']['created']); ?>&nbsp;</td-->
 		<td><?php echo h($menu['Menu']['modified']); ?>&nbsp;</td>
 		<!--td><?php //echo h($menu['Menu']['deleted']); ?>&nbsp;</td-->

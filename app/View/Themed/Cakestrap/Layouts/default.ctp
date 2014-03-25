@@ -32,11 +32,13 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			echo $this->fetch('meta');
 
 			echo $this->Html->css('bootstrap');
+			echo $this->Html->css('jquery.lightbox');
 			echo $this->Html->css('main');
 
 			echo $this->fetch('css');
 			
 			echo $this->Html->script('libs/jquery-1.10.2.min');
+			echo $this->Html->script('jquery.lightbox.min');
 			echo $this->Html->script('libs/bootstrap.min');
 			
 			echo $this->fetch('script');
@@ -66,7 +68,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			
 		</div><!-- /#main-container -->
 		
-		<div class="container">
+		<div class="container hidden">
 			<div class="well well-sm">
 				<small>
 					<?php echo $this->element('sql_dump'); ?>

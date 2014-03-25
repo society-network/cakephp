@@ -88,10 +88,18 @@ class PagesController extends AppController {
         $options = array('conditions' => array('DynamicRoute.slug' => '/home'));
         $dynamicRoute = $this->DynamicRoute->find('first', $options);
         if ($dynamicRoute) {
-            $options = array('conditions' => array('Document.' . $this->Document->primaryKey => $dynamicRoute['DynamicRoute']['document_id']));
+            $options = array('conditions' => array('Document.' . $this->Document->primaryKey => $dynamicRoute['DynamicRoute']['document_id'])
+            , 'recursive' => -1);
             $homepage= $this->Document->find('first', $options);
-            $this->set('title_for_layout', $homepage['Document']['name']);
-            $this->set('body', $homepage['Document']['body']);
+
+            $locale = $this->Session->read('Config.locale');
+            $locale_id = $locale['id'];
+            $options = array('conditions' => array('DocumentTranslation.document_id' => $homepage['Document']['id']
+            , 'DocumentTranslation.locale_id' => $locale_id)
+            , 'recursive' => -1);
+            $homepage_tran = $this->Document->DocumentTranslation->find('first', $options);
+            $this->set('title_for_layout', isset($homepage_tran['DocumentTranslation']['name'])?$homepage_tran['DocumentTranslation']['name']:$homepage['Document']['name']);
+            $this->set('body', isset($homepage_tran['DocumentTranslation']['body'])?$homepage_tran['DocumentTranslation']['body']:$homepage['Document']['body']);
         } else {
             throw new NotFoundException(__('Invalid document file'));
         }

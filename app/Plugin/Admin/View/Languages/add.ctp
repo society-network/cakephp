@@ -6,7 +6,7 @@
 		<div class="actions">
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('action' => 'index')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Languages'), array('action' => 'index')); ?></li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -15,11 +15,11 @@
 	
 	<div id="page-content" class="col-sm-9">
 
-		<h2><?php echo __('Add Locale'); ?></h2>
+		<h2><?php echo __('Add Language'); ?></h2>
 
-		<div class="locales form">
+		<div class="languages form">
 		
-			<?php echo $this->Form->create('Locale', array('role' => 'form')); ?>
+			<?php echo $this->Form->create('Language', array('role' => 'form')); ?>
 
 				<fieldset>
 

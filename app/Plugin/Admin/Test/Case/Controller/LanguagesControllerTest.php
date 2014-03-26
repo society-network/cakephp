@@ -1,11 +1,11 @@
 <?php
-App::uses('LocalesController', 'Controller');
+App::uses('LanguagesController', 'Admin.Controller');
 
 /**
- * LocalesController Test Case
+ * LanguagesController Test Case
  *
  */
-class LocalesControllerTest extends ControllerTestCase {
+class LanguagesControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,13 +13,13 @@ class LocalesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.locale',
-		'app.document_translation',
-		'app.document',
-		'app.user',
-		'app.user_group',
-		'app.category',
-		'app.document_file'
+		'plugin.admin.language',
+		'plugin.admin.document_translation',
+		'plugin.admin.document',
+		'plugin.admin.user',
+		'plugin.admin.user_group',
+		'plugin.admin.category',
+		'plugin.admin.document_file'
 	);
 
 /**

@@ -1,12 +1,12 @@
 <?php
 App::uses('AdminAppModel', 'Admin.Model');
 /**
- * Locale Model
+ * Language Model
  *
  * @property DocumentTranslation $DocumentTranslation
  * @property Document $Document
  */
-class Locale extends AdminAppModel {
+class Language extends AdminAppModel {
 
 /**
  * Validation rules
@@ -46,7 +46,7 @@ class Locale extends AdminAppModel {
 	public $hasMany = array(
 		'DocumentTranslation' => array(
 			'className' => 'DocumentTranslation',
-			'foreignKey' => 'locale_id',
+			'foreignKey' => 'language_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -59,7 +59,7 @@ class Locale extends AdminAppModel {
 		),
 		'Document' => array(
 			'className' => 'Document',
-			'foreignKey' => 'locale_id',
+			'foreignKey' => 'language_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

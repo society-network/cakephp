@@ -6,9 +6,9 @@
 		<div class="actions">
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Locale.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Locale.id'))); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('action' => 'index')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('Add Locale'), array('controller' => 'locales', 'action' => 'add')); ?> </li>
+				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Language.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Language.id'))); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Languages'), array('action' => 'index')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('Add Language'), array('controller' => 'languages', 'action' => 'add')); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -17,11 +17,11 @@
 	
 	<div id="page-content" class="col-sm-9">
 
-		<h2><?php echo __('Edit Locale'); ?></h2>
+		<h2><?php echo __('Edit Language'); ?></h2>
 
-		<div class="locales form">
+		<div class="languages form">
 		
-			<?php echo $this->Form->create('Locale', array('role' => 'form')); ?>
+			<?php echo $this->Form->create('Language', array('role' => 'form')); ?>
 
 				<fieldset>
 

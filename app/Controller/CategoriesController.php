@@ -49,9 +49,9 @@ class CategoriesController extends AppController {
         if (!$this->Category->exists($id)) {
             throw new NotFoundException(__('Invalid category'));
         }
-        $locale = $this->Session->read('Config.locale');
-        $locale_id = $locale['id'];
-        $documents = $this->Category->list_documents($id, $locale_id);
+        $language = $this->Session->read('Config.current_language');
+        $language_id = $language['id'];
+        $documents = $this->Category->list_documents($id, $language_id);
         $this->set('documents', $documents);
     }
 

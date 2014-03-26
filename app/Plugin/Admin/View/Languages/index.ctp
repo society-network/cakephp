@@ -6,8 +6,8 @@
 		<div class="actions">
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('action' => 'add'), array('class' => '')); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('controller' => 'locales', 'action' => 'index'), array('class' => '')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('New Language'), array('action' => 'add'), array('class' => '')); ?></li>
+				<li class="list-group-item"><?php echo $this->Html->link(__('List Languages'), array('controller' => 'languages', 'action' => 'index'), array('class' => '')); ?></li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->
@@ -16,9 +16,9 @@
 	
 	<div id="page-content" class="col-sm-9">
 
-		<div class="locales index">
+		<div class="languages index">
 		
-			<h2><?php echo __('Locales'); ?></h2>
+			<h2><?php echo __('Languages'); ?></h2>
 			
 			<div class="table-responsive">
 				<table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
@@ -34,18 +34,18 @@
 						</tr>
 					</thead>
 					<tbody>
-<?php foreach ($locales as $locale): ?>
+<?php foreach ($languages as $language): ?>
 	<tr>
-		<td><?php echo h($locale['Locale']['id']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['name']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['code']); ?>&nbsp;</td>
-		<!--td><?php //echo h($locale['Locale']['created']); ?>&nbsp;</td-->
-		<td><?php echo h($locale['Locale']['modified']); ?>&nbsp;</td>
-		<!--td><?php //echo h($locale['Locale']['deleted']); ?>&nbsp;</td-->
+		<td><?php echo h($language['Language']['id']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['name']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['code']); ?>&nbsp;</td>
+		<!--td><?php //echo h($language['Language']['created']); ?>&nbsp;</td-->
+		<td><?php echo h($language['Language']['modified']); ?>&nbsp;</td>
+		<!--td><?php //echo h($language['Language']['deleted']); ?>&nbsp;</td-->
 		<td class="actions">
-			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $locale['Locale']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $locale['Locale']['id'])); ?>
+			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $language['Language']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $language['Language']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $language['Language']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $language['Language']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

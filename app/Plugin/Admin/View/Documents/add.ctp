@@ -24,7 +24,7 @@
 				<fieldset>
 
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('selected' => isset($my_parent['locale_id'])?$my_parent['locale_id']:null, 'empty' => true, 'class' => 'form-control')); ?>
+						<?php echo $this->Form->input('language_id', array('selected' => isset($my_parent['language_id'])?$my_parent['language_id']:null, 'empty' => true, 'class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('category_id', array('selected' => isset($my_parent['category_id'])?$my_parent['category_id']:null, 'empty' => true, 'class' => 'form-control')); ?>

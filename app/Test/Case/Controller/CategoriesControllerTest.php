@@ -18,7 +18,7 @@ class CategoriesControllerTest extends ControllerTestCase {
 		'app.user',
 		'app.user_group',
 		'app.document_translation',
-		'app.locale',
+		'app.language',
 		'app.document_file'
 	);
 

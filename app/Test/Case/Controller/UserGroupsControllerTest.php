@@ -17,7 +17,7 @@ class UserGroupsControllerTest extends ControllerTestCase {
 		'app.user',
 		'app.document_translation',
 		'app.document',
-		'app.locale',
+		'app.language',
 		'app.category',
 		'app.document_file'
 	);

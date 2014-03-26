@@ -60,9 +60,9 @@ class DocumentsController extends AdminAppController {
 			}
 		}
 		$users = $this->Document->User->find('list');
-		$locales = $this->Document->Locale->find('list');
+		$languages = $this->Document->Language->find('list');
 		$categories = $this->Document->Category->find('list');
-		$this->set(compact('users', 'locales', 'categories'));
+		$this->set(compact('users', 'languages', 'categories'));
 	}
 
 /**
@@ -143,20 +143,20 @@ class DocumentsController extends AdminAppController {
             $this->set('default_slug', $default_slug);
 		//}
 		$users = $this->Document->User->find('list');
-		$locales = $this->Document->Locale->find('list');
+		$languages = $this->Document->Language->find('list');
 		$categories = $this->Document->Category->find('list');
         $options = array('conditions' => array('DynamicRoute.document_id' => $id));
         $dynamicRoutes = $this->DynamicRoute->find('first', $options);
-		$this->set(compact('users', 'locales', 'categories', 'dynamicRoutes'));
+		$this->set(compact('users', 'languages', 'categories', 'dynamicRoutes'));
 
         $options = array('conditions' => array('DocumentTranslation.document_id' => $id), 'recursive' => -1,
-            'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
+            'fields' => array('DocumentTranslation.id', 'DocumentTranslation.language_id'));
         $documentTranslations = $this->DocumentTranslation->find('all', $options);
-        $available_locales = array();
+        $available_languages = array();
         foreach ($documentTranslations as $translate) {
-            $available_locales[$translate['DocumentTranslation']['locale_id']] = $translate['DocumentTranslation']['id'];
+            $available_languages[$translate['DocumentTranslation']['language_id']] = $translate['DocumentTranslation']['id'];
         }
-        $this->set('available_locales', $available_locales);
+        $this->set('available_languages', $available_languages);
 
         $options = array('conditions' => array('DocumentFile.document_id' => $id), 'recursive' => -1);
         $documentFiles = $this->DocumentFile->find('all', $options);

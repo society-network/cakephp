@@ -5,7 +5,7 @@ App::uses('AdminAppModel', 'Admin.Model');
  *
  * @property Document $ParentDocument
  * @property User $User
- * @property Locale $Locale
+ * @property Language $Language
  * @property Category $Category
  * @property DocumentFile $DocumentFile
  * @property DocumentTranslation $DocumentTranslation
@@ -29,7 +29,7 @@ class Document extends AdminAppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'locale_id' => array(
+		'language_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -66,9 +66,9 @@ class Document extends AdminAppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Locale' => array(
-			'className' => 'Locale',
-			'foreignKey' => 'locale_id',
+		'Language' => array(
+			'className' => 'Language',
+			'foreignKey' => 'language_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

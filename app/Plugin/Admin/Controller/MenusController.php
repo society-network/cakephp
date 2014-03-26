@@ -56,8 +56,8 @@ class MenusController extends AdminAppController {
 			}
 		}
         $parents = $this->Menu->Parent->find('list');
-        $locales = $this->Menu->Locale->find('list');
-        $this->set(compact('parents', 'locales'));
+        $languages = $this->Menu->Language->find('list');
+        $this->set(compact('parents', 'languages'));
 	}
 
 /**
@@ -84,8 +84,8 @@ class MenusController extends AdminAppController {
 			$this->request->data = $this->Menu->find('first', $options);
 		}
         $parents = $this->Menu->Parent->find('list');
-        $locales = $this->Menu->Locale->find('list');
-        $this->set(compact('parents', 'locales'));
+        $languages = $this->Menu->Language->find('list');
+        $this->set(compact('parents', 'languages'));
 	}
 
 /**

@@ -17,7 +17,7 @@ class DocumentTranslationTest extends CakeTestCase {
 		'app.document',
 		'app.user',
 		'app.user_group',
-		'app.locale',
+		'app.language',
 		'app.category',
 		'app.document_file'
 	);

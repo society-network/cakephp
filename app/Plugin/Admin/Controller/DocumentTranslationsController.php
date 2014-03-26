@@ -48,8 +48,8 @@ class DocumentTranslationsController extends AdminAppController {
  */
 	public function add() {
         $document_id = isset($this->request->params['named']['document_id']) ? $this->request->params['named']['document_id'] : null;
-        $locale_id = isset($this->request->params['named']['locale_id']) ? $this->request->params['named']['locale_id'] : null;
-        $this->set(compact('document_id', 'locale_id'));
+        $language_id = isset($this->request->params['named']['language_id']) ? $this->request->params['named']['language_id'] : null;
+        $this->set(compact('document_id', 'language_id'));
 
 		if ($this->request->is('post')) {
 			$this->DocumentTranslation->create();
@@ -57,8 +57,8 @@ class DocumentTranslationsController extends AdminAppController {
             if ($document_id) {
                 $this->request->data['DocumentTranslation']['document_id'] = $document_id;
             }
-            if ($locale_id) {
-                $this->request->data['DocumentTranslation']['locale_id'] = $locale_id;
+            if ($language_id) {
+                $this->request->data['DocumentTranslation']['language_id'] = $language_id;
             }
 			if ($this->DocumentTranslation->save($this->request->data)) {
                 $new_id = $this->DocumentTranslation->getLastInsertId();
@@ -69,9 +69,9 @@ class DocumentTranslationsController extends AdminAppController {
 			}
 		}
 		$documents = $this->DocumentTranslation->Document->find('list');
-		$locales = $this->DocumentTranslation->Locale->find('list');
+		$languages = $this->DocumentTranslation->Language->find('list');
 		$users = $this->DocumentTranslation->User->find('list');
-		$this->set(compact('documents', 'locales', 'users'));
+		$this->set(compact('documents', 'languages', 'users'));
 	}
 
 /**
@@ -127,22 +127,22 @@ class DocumentTranslationsController extends AdminAppController {
 		//}
         $options = array('conditions' => array('Document.id' => $this->request->data['DocumentTranslation']['document_id']),
             'recursive' => -1,
-            'fields' => array('Document.id', 'Document.locale_id'));
+            'fields' => array('Document.id', 'Document.language_id'));
 		$parentDocuments = $this->Document->find('first', $options);
 		$documents = $this->DocumentTranslation->Document->find('list');
-		$locales = $this->DocumentTranslation->Locale->find('list');
+		$languages = $this->DocumentTranslation->Language->find('list');
 		$users = $this->DocumentTranslation->User->find('list');
-		$this->set(compact('parentDocuments', 'documents', 'locales', 'users'));
+		$this->set(compact('parentDocuments', 'documents', 'languages', 'users'));
 
         $options = array('conditions' => array('DocumentTranslation.document_id' => $this->request->data['DocumentTranslation']['document_id']),
             'recursive' => -1,
-            'fields' => array('DocumentTranslation.id', 'DocumentTranslation.locale_id'));
+            'fields' => array('DocumentTranslation.id', 'DocumentTranslation.language_id'));
         $documentTranslations = $this->DocumentTranslation->find('all', $options);
-        $available_locales = array();
+        $available_languages = array();
         foreach ($documentTranslations as $translate) {
-            $available_locales[$translate['DocumentTranslation']['locale_id']] = $translate['DocumentTranslation']['id'];
+            $available_languages[$translate['DocumentTranslation']['language_id']] = $translate['DocumentTranslation']['id'];
         }
-        $this->set('available_locales', $available_locales);
+        $this->set('available_languages', $available_languages);
 
         $options = array('conditions' => array('DocumentFile.document_translation_id' => $id), 'recursive' => -1);
         $documentFiles = $this->DocumentFile->find('all', $options);

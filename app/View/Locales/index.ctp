@@ -3,9 +3,9 @@
 	
 	<div id="page-content" class="col-sm-12">
 
-		<div class="locales index">
+		<div class="languages index">
 		
-			<h2><?php echo __('Locales'); ?></h2>
+			<h2><?php echo __('Languages'); ?></h2>
 			
 			<div class="table-responsive">
 				<table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
@@ -20,14 +20,14 @@
 						</tr>
 					</thead>
 					<tbody>
-<?php foreach ($locales as $locale): ?>
+<?php foreach ($languages as $language): ?>
 	<tr>
-		<td><?php echo h($locale['Locale']['id']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['name']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['code']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['created']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($locale['Locale']['deleted']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['id']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['name']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['code']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['created']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($language['Language']['deleted']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
 					</tbody>

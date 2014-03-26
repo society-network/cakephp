@@ -130,7 +130,7 @@
 											<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Parent Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Locale Id'); ?></th>
+		<th><?php echo __('Language Id'); ?></th>
 		<th><?php echo __('Category Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Summary'); ?></th>
@@ -150,7 +150,7 @@
 			<td><?php echo $document['id']; ?></td>
 			<td><?php echo $document['parent_id']; ?></td>
 			<td><?php echo $document['user_id']; ?></td>
-			<td><?php echo $document['locale_id']; ?></td>
+			<td><?php echo $document['language_id']; ?></td>
 			<td><?php echo $document['category_id']; ?></td>
 			<td><?php echo $document['name']; ?></td>
 			<td><?php echo $document['summary']; ?></td>

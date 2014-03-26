@@ -54,7 +54,7 @@
 		<td><?php echo h($documentFile['DocumentFile']['name']); ?>&nbsp;</td>
 		<td><?php echo h($documentFile['DocumentFile']['type']); ?>&nbsp;</td>
 		<!--td><?php //echo h($documentFile['DocumentFile']['path']); ?>&nbsp;</td-->
-		<td><?php echo h($documentFile['DocumentFile']['is_login_required']); ?>&nbsp;</td>
+		<td><?php echo h(empty($documentFile['DocumentFile']['is_login_required'])?'No':'Yes'); ?>&nbsp;</td>
 		<!--td><?php //echo h($documentFile['DocumentFile']['created']); ?>&nbsp;</td-->
 		<td><?php echo h($documentFile['DocumentFile']['modified']); ?>&nbsp;</td>
 		<!--td><?php //echo h($documentFile['DocumentFile']['deleted']); ?>&nbsp;</td-->

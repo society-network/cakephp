@@ -13,7 +13,7 @@
 						<tr>
 							<th><?php echo $this->Paginator->sort('id'); ?></th>
 							<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-							<th><?php echo $this->Paginator->sort('locale_id'); ?></th>
+							<th><?php echo $this->Paginator->sort('language_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('category_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('name'); ?></th>
 							<th><?php echo $this->Paginator->sort('summary'); ?></th>
@@ -32,7 +32,7 @@
 			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'view', $document['User']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($document['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $document['Locale']['id'])); ?>
+			<?php echo $this->Html->link($document['Language']['name'], array('controller' => 'languages', 'action' => 'view', $document['Language']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($document['Category']['name'], array('controller' => 'categories', 'action' => 'view', $document['Category']['id'])); ?>

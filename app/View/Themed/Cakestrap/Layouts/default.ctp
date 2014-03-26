@@ -67,15 +67,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</div><!-- /#footer .container -->
 			
 		</div><!-- /#main-container -->
-		
-		<div class="container hidden">
+        <?php if (getenv('environment') == 'development'): ?>
+		<div class="container">
 			<div class="well well-sm">
 				<small>
 					<?php echo $this->element('sql_dump'); ?>
 				</small>
 			</div><!-- /.well well-sm -->
 		</div><!-- /.container -->
-		
+        <?php endif; ?>
 	</body>
 
 </html>

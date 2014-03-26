@@ -45,9 +45,9 @@
 			<?php echo h($menu['Menu']['rght']); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Locale Id'); ?></strong></td>
+</tr><tr>		<td><strong><?php echo __('Language Id'); ?></strong></td>
 		<td>
-			<?php echo h($menu['Menu']['locale_id']); ?>
+			<?php echo h($menu['Menu']['language_id']); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Name'); ?></strong></td>

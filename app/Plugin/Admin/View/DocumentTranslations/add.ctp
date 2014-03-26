@@ -28,7 +28,7 @@
 						<?php echo $this->Form->input('document_id', array('class' => 'form-control', 'selected' => $document_id, 'disabled' => isset($document_id))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'selected' => $locale_id, 'disabled' => isset($locale_id))); ?>
+						<?php echo $this->Form->input('language_id', array('class' => 'form-control', 'selected' => $language_id, 'disabled' => isset($language_id))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>

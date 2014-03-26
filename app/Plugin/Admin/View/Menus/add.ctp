@@ -33,7 +33,7 @@
 						<?php echo $this->Form->input('rght', array('class' => 'form-control', 'label' => __('Next Item'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
+						<?php echo $this->Form->input('language_id', array('class' => 'form-control', 'label' => __('Language'))); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

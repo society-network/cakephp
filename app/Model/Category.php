@@ -83,20 +83,20 @@ class Category extends AppModel {
      * Get documents assign to specify category
      *
      * @param $category_id
-     * @param null $locale_id
+     * @param null $language_id
      * @return mixed
      */
-    public function list_documents($category_id, $locale_id = null) {
+    public function list_documents($category_id, $language_id = null) {
         $options = array('conditions' => array('Document.category_id' => $category_id), 'recursive' => -1);
         $documents = $this->Document->find('all', $options);
-        if ($locale_id) {
+        if ($language_id) {
             $document_ids = array();
             foreach ($documents as $document) {
                 $document_ids[] = $document['Document']['id'];
             }
             $DocumentTranslation = ClassRegistry::init('DocumentTranslation');
             $options = array('conditions' => array('DocumentTranslation.document_id' => $document_ids,
-                'DocumentTranslation.locale_id' => $locale_id), 'recursive' => -1);
+                'DocumentTranslation.language_id' => $language_id), 'recursive' => -1);
             $doc_trans = $DocumentTranslation->find('all', $options);
             foreach ($doc_trans as $doc_tran) {
                 $position = array_search($doc_tran['DocumentTranslation']['document_id'], $document_ids);

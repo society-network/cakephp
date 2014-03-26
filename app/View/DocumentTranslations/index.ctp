@@ -13,7 +13,7 @@
 						<tr>
 							<th><?php echo $this->Paginator->sort('id'); ?></th>
 							<th><?php echo $this->Paginator->sort('document_id'); ?></th>
-							<th><?php echo $this->Paginator->sort('locale_id'); ?></th>
+							<th><?php echo $this->Paginator->sort('language_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 							<th><?php echo $this->Paginator->sort('name'); ?></th>
 							<th><?php echo $this->Paginator->sort('summary'); ?></th>
@@ -31,7 +31,7 @@
 			<?php echo $this->Html->link($documentTranslation['Document']['name'], array('controller' => 'documents', 'action' => 'view', $documentTranslation['Document']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($documentTranslation['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $documentTranslation['Locale']['id'])); ?>
+			<?php echo $this->Html->link($documentTranslation['Language']['name'], array('controller' => 'languages', 'action' => 'view', $documentTranslation['Language']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($documentTranslation['User']['name'], array('controller' => 'users', 'action' => 'view', $documentTranslation['User']['id'])); ?>

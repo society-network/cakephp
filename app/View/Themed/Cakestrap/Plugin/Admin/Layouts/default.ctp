@@ -64,7 +64,7 @@ $cakeDescription = __d('cake_dev', 'Admin Panel');
 			</div><!-- /#footer .container -->
 			
 		</div><!-- /#main-container -->
-		
+		<?php if (getenv('environment') == 'development'): ?>
 		<div class="container">
 			<div class="well well-sm">
 				<small>
@@ -72,7 +72,7 @@ $cakeDescription = __d('cake_dev', 'Admin Panel');
 				</small>
 			</div><!-- /.well well-sm -->
 		</div><!-- /.container -->
-		
+		<?php endif; ?>
 	</body>
 
 </html>

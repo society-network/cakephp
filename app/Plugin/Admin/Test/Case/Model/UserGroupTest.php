@@ -17,7 +17,7 @@ class UserGroupTest extends CakeTestCase {
 		'plugin.admin.user',
 		'plugin.admin.document_translation',
 		'plugin.admin.document',
-		'plugin.admin.locale',
+		'plugin.admin.language',
 		'plugin.admin.category',
 		'plugin.admin.document_file'
 	);

@@ -18,7 +18,7 @@ class CategoriesControllerTest extends ControllerTestCase {
 		'plugin.admin.user',
 		'plugin.admin.user_group',
 		'plugin.admin.document_translation',
-		'plugin.admin.locale',
+		'plugin.admin.language',
 		'plugin.admin.document_file'
 	);
 

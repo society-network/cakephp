@@ -16,15 +16,15 @@
         <div class="actions">
             <h4><?php echo __('Translations'); ?></h4>
             <ul class="list-group">
-                <?php foreach ($locales as $locale_id=>$locale_name): ?>
-                    <?php if ($locale_id == $this->data['DocumentTranslation']['locale_id']): ?>
-                        <li class="list-group-item"><?php echo $locale_name; ?></li>
-                    <?php elseif ($locale_id == $parentDocuments['Document']['locale_id']): ?>
-                        <li class="list-group-item"><?php echo $this->Html->link($locale_name, array('controller' => 'documents', 'action' => 'edit', $this->data['Document']['id'])); ?> </li>
-                    <?php elseif (in_array($locale_id, array_keys($available_locales))): ?>
-                        <li class="list-group-item"><?php echo $this->Html->link($locale_name, array('controller' => 'document_translations', 'action' => 'edit', $available_locales[$locale_id])); ?> </li>
+                <?php foreach ($languages as $language_id=>$language_name): ?>
+                    <?php if ($language_id == $this->data['DocumentTranslation']['language_id']): ?>
+                        <li class="list-group-item"><?php echo $language_name; ?></li>
+                    <?php elseif ($language_id == $parentDocuments['Document']['language_id']): ?>
+                        <li class="list-group-item"><?php echo $this->Html->link($language_name, array('controller' => 'documents', 'action' => 'edit', $this->data['Document']['id'])); ?> </li>
+                    <?php elseif (in_array($language_id, array_keys($available_languages))): ?>
+                        <li class="list-group-item"><?php echo $this->Html->link($language_name, array('controller' => 'document_translations', 'action' => 'edit', $available_languages[$language_id])); ?> </li>
                     <?php else: ?>
-                        <li class="list-group-item"><?php echo $this->Html->link($locale_name, array('controller' => 'document_translations', 'action' => 'add', 'document_id' => $this->data['Document']['id'], 'locale_id' => $locale_id)); ?> </li>
+                        <li class="list-group-item"><?php echo $this->Html->link($language_name, array('controller' => 'document_translations', 'action' => 'add', 'document_id' => $this->data['Document']['id'], 'language_id' => $language_id)); ?> </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul><!-- /.list-group -->
@@ -54,7 +54,7 @@
                         <?php //echo $this->Form->input('document_id', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
                     <div class="form-group">
-                        <?php echo $this->Form->input('locale_id', array('class' => 'form-control', 'label' => __('Language'), 'disabled'=>'disabled')); ?>
+                        <?php echo $this->Form->input('language_id', array('class' => 'form-control', 'label' => __('Language'), 'disabled'=>'disabled')); ?>
                     </div><!-- .form-group -->
                     <div class="form-group">
                         <?php //echo $this->Form->input('user_id', array('class' => 'form-control')); ?>

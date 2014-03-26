@@ -17,7 +17,7 @@ class UserTest extends CakeTestCase {
 		'app.user_group',
 		'app.document_translation',
 		'app.document',
-		'app.locale',
+		'app.language',
 		'app.category',
 		'app.document_file'
 	);

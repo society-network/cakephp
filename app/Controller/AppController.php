@@ -59,26 +59,24 @@ class AppController extends Controller {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('*');
-        if (!$this->Session->check('Config.locale')) {
-            $this->Session->write('Config.locale',  Configure::read('Config.locale'));
-            Configure::write('Config.language', Configure::read('Config.locale.code'));
-            //Configure::write('Config.locale', $this->Session->read('Config.locale'));
+        if (!$this->Session->check('Config.current_language')) {
+            $this->Session->write('Config.current_language',  Configure::read('Config.current_language'));
+            Configure::write('Config.language', Configure::read('Config.current_language.code'));
         } else {
-            Configure::write('Config.language', $this->Session->read('Config.locale.code'));
-            //$this->Session->write('Config.locale',  Configure::read('Config.locale'));
+            Configure::write('Config.language', $this->Session->read('Config.current_language.code'));
         }
 
         // load menu
         $this->loadModel('Menu');
-        $locale_id = $this->Session->read('Config.locale.id');
+        $language_id = $this->Session->read('Config.current_language.id');
         $options = array('conditions' => array('Menu.active' => 1,
-            'Menu.locale_id' => $locale_id
+            'Menu.language_id' => $language_id
         ), 'order' => array('Menu.lft ASC'), 'recursive' => -1);
         $main_menu_items = $this->Menu->find('threaded', $options);
         $url = $this->request->here(false);
-        if (strpos($url, '/locales/set_by_code') === false && strpos($url, '/admin') === false) {
+        if (strpos($url, '/languages/set_by_code') === false && strpos($url, '/admin') === false) {
             $options = array('conditions' => array('Menu.url' => $url,
-                'Menu.locale_id' => $locale_id, 'Menu.active' => 1), 'recursive' => 0);
+                'Menu.language_id' => $language_id, 'Menu.active' => 1), 'recursive' => 0);
             $current_menu = $this->Menu->find('first', $options);
             if ($current_menu) {
                 $sub_menus = $this->Menu->children($current_menu['Menu']['parent_id']);

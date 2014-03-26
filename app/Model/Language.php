@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Locale Model
+ * Language Model
  *
  * @property DocumentTranslation $DocumentTranslation
  * @property Document $Document
  */
-class Locale extends AppModel {
+class Language extends AppModel {
 
 /**
  * Validation rules
@@ -46,7 +46,7 @@ class Locale extends AppModel {
 	public $hasMany = array(
 		'DocumentTranslation' => array(
 			'className' => 'DocumentTranslation',
-			'foreignKey' => 'locale_id',
+			'foreignKey' => 'language_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -59,7 +59,7 @@ class Locale extends AppModel {
 		),
 		'Document' => array(
 			'className' => 'Document',
-			'foreignKey' => 'locale_id',
+			'foreignKey' => 'language_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

@@ -41,12 +41,12 @@ class DocumentsController extends AppController {
 		if (!$this->Document->exists($id)) {
 			throw new NotFoundException(__('Invalid document'));
 		}
-        $locale_id = $this->Session->read('Config.locale.id');
+        $language_id = $this->Session->read('Config.current_language.id');
 		$options = array('conditions' => array('Document.' . $this->Document->primaryKey => $id));
         $document = $this->Document->find('first', $options);
         $tran_count = count($document['DocumentTranslation']);
         for ($i = 0; $i < $tran_count; $i++) {
-            if ($document['DocumentTranslation'][$i]['locale_id'] != $locale_id) {
+            if ($document['DocumentTranslation'][$i]['language_id'] != $language_id) {
                 unset($document['DocumentTranslation'][$i]);
             }
         }

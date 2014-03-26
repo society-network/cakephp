@@ -18,7 +18,7 @@ class DocumentFilesControllerTest extends ControllerTestCase {
 		'app.user',
 		'app.user_group',
 		'app.document_translation',
-		'app.locale',
+		'app.language',
 		'app.category'
 	);
 

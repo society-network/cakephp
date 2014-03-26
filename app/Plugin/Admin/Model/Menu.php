@@ -26,7 +26,7 @@ class Menu extends AdminAppModel {
  * @var array
  */
 	public $validate = array(
-		'locale_id' => array(
+		'language_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -81,9 +81,9 @@ class Menu extends AdminAppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Locale' => array(
-            'className' => 'Locale',
-            'foreignKey' => 'locale_id',
+        'Language' => array(
+            'className' => 'Language',
+            'foreignKey' => 'language_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''

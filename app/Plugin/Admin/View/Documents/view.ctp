@@ -14,8 +14,8 @@
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Parent Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('controller' => 'locales', 'action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('controller' => 'locales', 'action' => 'add'), array('class' => '')); ?> </li>
+		<li class="list-group-item"><?php echo $this->Html->link(__('List Languages'), array('controller' => 'languages', 'action' => 'index'), array('class' => '')); ?> </li>
+		<li class="list-group-item"><?php echo $this->Html->link(__('New Language'), array('controller' => 'languages', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index'), array('class' => '')); ?> </li>
@@ -47,9 +47,9 @@
 			<?php echo $this->Html->link($document['User']['name'], array('controller' => 'users', 'action' => 'view', $document['User']['id']), array('class' => '')); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Locale'); ?></strong></td>
+</tr><tr>		<td><strong><?php echo __('Language'); ?></strong></td>
 		<td>
-			<?php echo $this->Html->link($document['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $document['Locale']['id']), array('class' => '')); ?>
+			<?php echo $this->Html->link($document['Language']['name'], array('controller' => 'languages', 'action' => 'view', $document['Language']['id']), array('class' => '')); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Category'); ?></strong></td>
@@ -181,7 +181,7 @@
 								<tr>
 											<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Document Id'); ?></th>
-		<th><?php echo __('Locale Id'); ?></th>
+		<th><?php echo __('Language Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Summary'); ?></th>
@@ -199,7 +199,7 @@
 		<tr>
 			<td><?php echo $documentTranslation['id']; ?></td>
 			<td><?php echo $documentTranslation['document_id']; ?></td>
-			<td><?php echo $documentTranslation['locale_id']; ?></td>
+			<td><?php echo $documentTranslation['language_id']; ?></td>
 			<td><?php echo $documentTranslation['user_id']; ?></td>
 			<td><?php echo $documentTranslation['name']; ?></td>
 			<td><?php echo $documentTranslation['summary']; ?></td>
@@ -239,7 +239,7 @@
 								<tr>
 											<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Locale Id'); ?></th>
+		<th><?php echo __('Language Id'); ?></th>
 		<th><?php echo __('Category Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Summary'); ?></th>
@@ -258,7 +258,7 @@
 		<tr>
 			<td><?php echo $childDocument['id']; ?></td>
 			<td><?php echo $childDocument['user_id']; ?></td>
-			<td><?php echo $childDocument['locale_id']; ?></td>
+			<td><?php echo $childDocument['language_id']; ?></td>
 			<td><?php echo $childDocument['category_id']; ?></td>
 			<td><?php echo $childDocument['name']; ?></td>
 			<td><?php echo $childDocument['summary']; ?></td>

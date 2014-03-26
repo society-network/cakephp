@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * DocumentTranslation Model
  *
  * @property Document $Document
- * @property Locale $Locale
+ * @property Language $Language
  * @property User $User
  * @property DocumentFile $DocumentFile
  */
@@ -26,7 +26,7 @@ class DocumentTranslation extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'locale_id' => array(
+		'language_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -73,9 +73,9 @@ class DocumentTranslation extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Locale' => array(
-			'className' => 'Locale',
-			'foreignKey' => 'locale_id',
+		'Language' => array(
+			'className' => 'Language',
+			'foreignKey' => 'language_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

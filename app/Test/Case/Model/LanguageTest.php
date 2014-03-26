@@ -1,11 +1,11 @@
 <?php
-App::uses('Locale', 'Model');
+App::uses('Language', 'Model');
 
 /**
- * Locale Test Case
+ * Language Test Case
  *
  */
-class LocaleTest extends CakeTestCase {
+class LanguageTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,7 +13,7 @@ class LocaleTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.locale',
+		'app.language',
 		'app.document_translation',
 		'app.document',
 		'app.user',
@@ -29,7 +29,7 @@ class LocaleTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Locale = ClassRegistry::init('Locale');
+		$this->Language = ClassRegistry::init('Language');
 	}
 
 /**
@@ -38,7 +38,7 @@ class LocaleTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Locale);
+		unset($this->Language);
 
 		parent::tearDown();
 	}

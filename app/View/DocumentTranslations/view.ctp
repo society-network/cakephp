@@ -12,8 +12,8 @@
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Document Translation'), array('action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Locales'), array('controller' => 'locales', 'action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Locale'), array('controller' => 'locales', 'action' => 'add'), array('class' => '')); ?> </li>
+		<li class="list-group-item"><?php echo $this->Html->link(__('List Languages'), array('controller' => 'languages', 'action' => 'index'), array('class' => '')); ?> </li>
+		<li class="list-group-item"><?php echo $this->Html->link(__('New Language'), array('controller' => 'languages', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add'), array('class' => '')); ?> </li>
 		<li class="list-group-item"><?php echo $this->Html->link(__('List Document Files'), array('controller' => 'document_files', 'action' => 'index'), array('class' => '')); ?> </li>
@@ -44,9 +44,9 @@
 			<?php echo $this->Html->link($documentTranslation['Document']['name'], array('controller' => 'documents', 'action' => 'view', $documentTranslation['Document']['id']), array('class' => '')); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Locale'); ?></strong></td>
+</tr><tr>		<td><strong><?php echo __('Language'); ?></strong></td>
 		<td>
-			<?php echo $this->Html->link($documentTranslation['Locale']['name'], array('controller' => 'locales', 'action' => 'view', $documentTranslation['Locale']['id']), array('class' => '')); ?>
+			<?php echo $this->Html->link($documentTranslation['Language']['name'], array('controller' => 'languages', 'action' => 'view', $documentTranslation['Language']['id']), array('class' => '')); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('User'); ?></strong></td>

@@ -33,7 +33,7 @@
  */
 	Configure::write('debug', 0);
     if (getenv('environment') == 'development') {
-        //Configure::write('debug', 2);
+        Configure::write('debug', 2);
     }
 
 /**

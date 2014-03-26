@@ -17,7 +17,7 @@ class DocumentTranslationTest extends CakeTestCase {
 		'plugin.admin.document',
 		'plugin.admin.user',
 		'plugin.admin.user_group',
-		'plugin.admin.locale',
+		'plugin.admin.language',
 		'plugin.admin.category',
 		'plugin.admin.document_file'
 	);

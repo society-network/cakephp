@@ -17,7 +17,7 @@ class UsersControllerTest extends ControllerTestCase {
 		'plugin.admin.user_group',
 		'plugin.admin.document_translation',
 		'plugin.admin.document',
-		'plugin.admin.locale',
+		'plugin.admin.language',
 		'plugin.admin.category',
 		'plugin.admin.document_file'
 	);

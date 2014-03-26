@@ -1,9 +1,9 @@
 <?php
 /**
- * LocaleFixture
+ * LanguageFixture
  *
  */
-class LocaleFixture extends CakeTestFixture {
+class LanguageFixture extends CakeTestFixture {
 
 /**
  * Fields

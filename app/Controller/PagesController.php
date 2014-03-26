@@ -92,10 +92,10 @@ class PagesController extends AppController {
             , 'recursive' => -1);
             $homepage= $this->Document->find('first', $options);
 
-            $locale = $this->Session->read('Config.locale');
-            $locale_id = $locale['id'];
+            $language = $this->Session->read('Config.current_language');
+            $language_id = $language['id'];
             $options = array('conditions' => array('DocumentTranslation.document_id' => $homepage['Document']['id']
-            , 'DocumentTranslation.locale_id' => $locale_id)
+            , 'DocumentTranslation.language_id' => $language_id)
             , 'recursive' => -1);
             $homepage_tran = $this->Document->DocumentTranslation->find('first', $options);
             $this->set('title_for_layout', isset($homepage_tran['DocumentTranslation']['name'])?$homepage_tran['DocumentTranslation']['name']:$homepage['Document']['name']);

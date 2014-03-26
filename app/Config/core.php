@@ -159,7 +159,7 @@
  *
  */
     if (getenv('environment') == 'development') {
-        Configure::write('Cache.disable', true);
+        //Configure::write('Cache.disable', true);
     }
 
 /**

@@ -3,7 +3,7 @@
         <a href="/"><?php echo $this->Html->image('uip.png', array('class' => 'img-responsive', 'alt' => 'United Investment Properties')); ?></a>
     </div>
     <div class="col-md-6 text-right">
-        <?php $current_local =  $this->Session->read('Config.current_lang'); ?>
+        <?php $current_local =  $this->Session->read('Config.current_language'); ?>
         <p><?php if ($current_local['code'] == 'zh-TW'): ?>
             <?php echo $this->Html->link(__('English'), array('plugin' => null, 'controller' => 'languages', 'action' => 'set_by_code', 'en-AU'), array('class' => '')); ?>
         <?php else: ?>

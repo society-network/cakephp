@@ -7,7 +7,11 @@
             <h4><?php echo __('Actions'); ?></h4>
 			<ul class="list-group">
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('DocumentFile.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('DocumentFile.id'))); ?></li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('Back To Document'), array('controller' => 'documents', 'action' => 'edit',  $this->Form->value('DocumentFile.document_id'))); ?> </li>
+				<?php if ($this->Form->value('DocumentFile.document_id')): ?>
+                    <li class="list-group-item"><?php echo $this->Html->link(__('Back To Document'), array('controller' => 'documents', 'action' => 'edit',  $this->Form->value('DocumentFile.document_id'))); ?> </li>
+				<?php else: ?>
+                    <li class="list-group-item"><?php echo $this->Html->link(__('Back To Document'), array('controller' => 'document_translations', 'action' => 'edit',  $this->Form->value('DocumentFile.document_translation_id'))); ?> </li>
+                <?php endif; ?>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->

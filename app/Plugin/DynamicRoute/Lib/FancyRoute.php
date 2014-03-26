@@ -34,7 +34,7 @@ class FancyRoute {
 	static $options = array(
 		'model' => 'DynamicRoute.DynamicRoute',
 		'cacheKey' => 'dynamic_routes',
-		'cache' => false,
+		'cache' => true,
 	);
 
 	static $_routes = array();

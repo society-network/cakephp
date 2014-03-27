@@ -1,4 +1,6 @@
 <?php
+App::uses('DynamicRouteAppModel', 'DynamicRoute.Model');
+
 class DynamicRoute extends DynamicRouteAppModel {
 
 	public $validate = array(

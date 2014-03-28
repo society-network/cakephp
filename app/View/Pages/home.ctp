@@ -16,6 +16,19 @@
 </div>
 <div class="row">
     <div class="col-md-12"><br/>
-        <?php echo $body; ?>
+        <div>
+            <?php echo $body; ?>
+        </div>
+        <div>
+            <?php if ($files): ?>
+                <p><ul>
+                    <?php foreach ($files as $file): ?>
+                        <li>
+                            <?php echo $this->Html->link($file['name'], array('controller' => 'document_files', 'action' => 'get', $file['id'])); ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul></p>
+            <?php endif; ?>
+        </div>
     </div>
 </div>

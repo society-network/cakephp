@@ -89,7 +89,7 @@ class PagesController extends AppController {
         $dynamicRoute = $this->DynamicRoute->find('first', $options);
         if ($dynamicRoute) {
             $options = array('conditions' => array('Document.' . $this->Document->primaryKey => $dynamicRoute['DynamicRoute']['document_id'])
-            , 'recursive' => -1);
+            , 'recursive' => 1);
             $homepage= $this->Document->find('first', $options);
 
             $language = $this->Session->read('Config.current_language');
@@ -107,6 +107,7 @@ class PagesController extends AppController {
             }
             $this->set('cover_img', $cover_img);
             $this->set('body', isset($homepage_tran['DocumentTranslation']['body'])?$homepage_tran['DocumentTranslation']['body']:$homepage['Document']['body']);
+            $this->set('files', $homepage['DocumentFile']);
         } else {
             throw new NotFoundException(__('Invalid document file'));
         }

@@ -50,12 +50,6 @@ class DocumentsController extends AppController {
                 unset($document['DocumentTranslation'][$i]);
             }
         }
-        $file_count = count($document['DocumentFile']);
-        for ($i = 0; $i < $file_count; $i++) {
-            if ($document['DocumentFile'][$i]['language_id'] != $language_id) {
-                unset($document['DocumentFile'][$i]);
-            }
-        }
         if ($document['DocumentTranslation']) {
             $document['DocumentTranslation'] = $document['DocumentTranslation'][0];
         }

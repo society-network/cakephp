@@ -99,6 +99,13 @@ class PagesController extends AppController {
             , 'recursive' => -1);
             $homepage_tran = $this->Document->DocumentTranslation->find('first', $options);
             $this->set('title_for_layout', isset($homepage_tran['DocumentTranslation']['name'])?$homepage_tran['DocumentTranslation']['name']:$homepage['Document']['name']);
+            $cover_img = isset($homepage_tran['DocumentTranslation']['cover_img'])?$homepage_tran['DocumentTranslation']['cover_img']:$homepage['Document']['cover_img'];
+            if ($cover_img) {
+                $cover_img = explode(',', $cover_img);
+            } else {
+                $cover_img = array();
+            }
+            $this->set('cover_img', $cover_img);
             $this->set('body', isset($homepage_tran['DocumentTranslation']['body'])?$homepage_tran['DocumentTranslation']['body']:$homepage['Document']['body']);
         } else {
             throw new NotFoundException(__('Invalid document file'));

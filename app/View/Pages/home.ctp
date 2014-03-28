@@ -3,24 +3,13 @@
     <div class="col-md-12">
         <div id="slideshow0" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="item active">
-                    <img class="img-rounded img" src="/img/sydney.jpg" alt="Sydney">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="/img/melbourne.jpg" alt="Sydney">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="/img/brisbane.jpg" alt="Sydney">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="/img/goldcoast.jpg" alt="Sydney">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="/img/hobart.jpg" alt="Sydney">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="/img/perth.jpg" alt="Sydney">
-                </div>
+                <?php if ($cover_img): ?>
+                    <?php $img_count = count($cover_img); for ($i = 0; $i < $img_count; $i++): ?>
+                        <div class="item <?php echo ($i==0)?'active':''; ?>">
+                            <img class="img-rounded img" src="<?php echo $cover_img[$i]; ?>" alt="<?php echo $cover_img[$i]; ?>">
+                        </div>
+                    <?php endfor; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

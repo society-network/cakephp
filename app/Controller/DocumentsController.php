@@ -56,8 +56,11 @@ class DocumentsController extends AppController {
         //debug($document);
         $cover_img = !empty($document['DocumentTranslation']['cover_img'])?$document['DocumentTranslation']['cover_img']:$document['Document']['cover_img'];
         if ($cover_img) {
-            $this->set('cover_img', explode('|', $cover_img));
+            $cover_img = explode(',', $cover_img);
+        } else {
+            $cover_img = array();
         }
+        $this->set('cover_img', $cover_img);
         $this->set('is_login_required', $document['Document']['is_login_required']);
 		$this->set('name', !empty($document['DocumentTranslation']['name'])?$document['DocumentTranslation']['name']:$document['Document']['name']);
 		$this->set('body', !empty($document['DocumentTranslation']['body'])?$document['DocumentTranslation']['body']:$document['Document']['body']);

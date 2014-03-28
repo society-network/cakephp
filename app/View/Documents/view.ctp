@@ -7,12 +7,13 @@
 <!--                <li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
 <!--            </ol>-->
             <div class="carousel-inner">
-                <div class="item active">
-                    <img class="img-rounded" src="http://merkent.com/bootstrap/image/cache/data/banner/samsung-banner-1170x220.jpg" alt="Samsung Tab 10.1">
-                </div>
-                <div class="item">
-                    <img class="img-rounded" src="http://merkent.com/bootstrap/image/cache/data/banner/ipad-mini-1170x220.JPG" alt="iPad Mini">
-                </div>
+                <?php if ($cover_img): ?>
+                    <?php $img_count = count($cover_img); for ($i = 0; $i < $img_count; $i++): ?>
+                        <div class="item <?php echo ($i==0)?'active':''; ?>">
+                            <img class="img-rounded img" src="<?php echo $cover_img[$i]; ?>" alt="<?php echo $cover_img[$i]; ?>">
+                        </div>
+                    <?php endfor; ?>
+                <?php endif; ?>
             </div>
 <!--            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">-->
 <!--                <span class="glyphicon glyphicon-chevron-left"></span>-->

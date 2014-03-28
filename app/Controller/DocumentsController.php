@@ -50,6 +50,12 @@ class DocumentsController extends AppController {
                 unset($document['DocumentTranslation'][$i]);
             }
         }
+        $file_count = count($document['DocumentFile']);
+        for ($i = 0; $i < $file_count; $i++) {
+            if ($document['DocumentFile'][$i]['language_id'] != $language_id) {
+                unset($document['DocumentFile'][$i]);
+            }
+        }
         if ($document['DocumentTranslation']) {
             $document['DocumentTranslation'] = $document['DocumentTranslation'][0];
         }
@@ -64,6 +70,7 @@ class DocumentsController extends AppController {
         $this->set('is_login_required', $document['Document']['is_login_required']);
 		$this->set('name', !empty($document['DocumentTranslation']['name'])?$document['DocumentTranslation']['name']:$document['Document']['name']);
 		$this->set('body', !empty($document['DocumentTranslation']['body'])?$document['DocumentTranslation']['body']:$document['Document']['body']);
+		$this->set('files', $document['DocumentFile']);
 	}
 
 }

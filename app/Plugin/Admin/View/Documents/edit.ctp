@@ -9,7 +9,6 @@
 				<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Document.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Document.id'))); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?></li>
 				<li class="list-group-item"><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Sub Document'), array('controller' => 'documents', 'action' => 'add', $this->Form->value('Document.id'))); ?> </li>
 			</ul><!-- /.list-group -->
 
 		</div><!-- /.actions -->

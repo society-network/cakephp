@@ -28,6 +28,17 @@
         <div>
             <p><?php echo $body; ?></p>
         </div>
+        <div>
+            <?php if ($files): ?>
+            <p><ul>
+                <?php foreach ($files as $file): ?>
+                    <li>
+                        <?php echo $this->Html->link($file['name'], array('controller' => 'document_files', 'action' => 'get', $file['id'])); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul></p>
+            <?php endif; ?>
+        </div>
     </div>
     <div class="col-md-3">
         <div class="panel panel-default">

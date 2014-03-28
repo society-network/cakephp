@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `modified` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `categories`
@@ -42,7 +42,14 @@ INSERT INTO `categories` (`id`, `parent_id`, `name`, `created`, `modified`, `del
 (1, NULL, 'Home', '2014-03-13 07:11:52', '2014-03-20 08:11:25', NULL),
 (2, NULL, 'Real Estate', '2014-03-20 07:47:43', '2014-03-20 08:20:24', NULL),
 (3, NULL, 'Business', '2014-03-20 07:47:49', '2014-03-20 08:11:30', NULL),
-(4, NULL, 'Career', '2014-03-20 07:47:59', '2014-03-20 08:11:35', NULL);
+(4, NULL, 'Career', '2014-03-20 07:47:59', '2014-03-20 08:11:35', NULL),
+(5, 2, 'Off The Plan', '2014-03-28 11:47:53', '2014-03-28 11:47:53', NULL),
+(6, 2, 'Residential', '2014-03-28 11:48:39', '2014-03-28 11:48:39', NULL),
+(7, 2, 'Commercial', '2014-03-28 11:48:55', '2014-03-28 11:48:55', NULL),
+(8, 2, 'Site', '2014-03-28 11:49:12', '2014-03-28 11:49:12', NULL),
+(9, 3, 'Retail', '2014-03-28 11:49:47', '2014-03-28 11:49:47', NULL),
+(10, 3, 'Wholesale', '2014-03-28 11:50:05', '2014-03-28 11:50:05', NULL),
+(11, 3, 'Franchise', '2014-03-28 11:50:26', '2014-03-28 11:50:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -65,14 +72,7 @@ CREATE TABLE IF NOT EXISTS `document_files` (
   `modified` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- 转存表中的数据 `document_files`
---
-
-INSERT INTO `document_files` (`id`, `user_id`, `document_id`, `document_translation_id`, `name`, `type`, `size`, `path`, `is_login_required`, `created`, `modified`, `deleted`) VALUES
-(1, 1, NULL, 3, '430561_10150640539708358_1872149793_n.jpg', 'image/jpeg', 96040, '/home/jack/www/uiproperties/app/webroot/uploads/1395780667_430561_10150640539708358_1872149793_n.jpg', 1, '2014-03-26 07:51:07', '2014-03-26 07:51:07', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -95,16 +95,14 @@ CREATE TABLE IF NOT EXISTS `document_translations` (
   `modified` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `document_translations`
 --
 
 INSERT INTO `document_translations` (`id`, `document_id`, `language_id`, `user_id`, `name`, `summary`, `body`, `cover_img`, `thumbnail`, `created`, `modified`, `deleted`) VALUES
-(1, 1, 2, 1, '主页', '悉尼联投物业公司由具有远见卓识的Leo 苏先生创立。苏先生自2007年起即从事房地产业。凭借对地方市场的深入了解，丰富的行业知识，以及对客户“提供最高标准的专业个性化的销售和物业管理服务”的承诺，悉尼联投物业公司与客户建立了紧密的联系并且获得客户多年信任。\r\n\r\n悉尼联投物业公司在悉尼房地产市场表现强劲。得益于苏先生在澳洲和新西兰房地产行业的丰富经验，悉尼联投物业公司不但在两个国家建立了宽广的商业网络，而且对澳洲和海外房地产市场有了独特的认识。\r\n\r\n怀着将公司发展壮大成为符合当前以及未来市场需求的地产服务提供商的决心，悉尼联投物业公司强大并且组织紧密的团队用心倾听买家和卖家的需求，致力于提升客户满意度。', '<p>悉尼联投物业公司由具有远见卓识的Leo 苏先生创立。苏先生自2007年起即从事房地产业。凭借对地方市场的深入了解，丰富的行业知识，以及对客户&ldquo;提供最高标准的专业个性化的销售和物业管理服务&rdquo;的承诺，悉尼联投物业公司与客户建立了紧密的联系并且获得客户多年信任。</p>\r\n\r\n<p>悉尼联投物业公司在悉尼房地产市场表现强劲。得益于苏先生在澳洲和新西兰房地产行业的丰富经验，悉尼联投物业公司不但在两个国家建立了宽广的商业网络，而且对澳洲和海外房地产市场有了独特的认识。</p>\r\n\r\n<p>怀着将公司发展壮大成为符合当前以及未来市场需求的地产服务提供商的决心，悉尼联投物业公司强大并且组织紧密的团队用心倾听买家和卖家的需求，致力于提升客户满意度。</p>\r\n\r\n<ul>\r\n	<li>新南威尔士州地产，证券以及商业经营许可证 号1542273</li>\r\n	<li>新南威尔士州公司执照号1709945</li>\r\n	<li>新西兰房地产中介执照号10054239</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '/img/sydney.jpg,/img/melbourne.jpg,/img/brisbane.jpg,/img/goldcoast.jpg,/img/hobart.jpg,/img/perth.jpg', '', '2014-03-16 15:57:02', '2014-03-26 22:33:06', NULL),
-(2, 2, 2, 1, '中文测试', '测试测试', '<p>悉尼房地产大热！</p>\r\n', '', '', '2014-03-25 09:57:59', '2014-03-25 09:57:59', NULL),
-(3, 4, 2, 1, '楼花期房', '悉尼联投物业公司由具有远见卓识的Leo 苏先生创立。苏先生自2007年起即从事房地产业。凭借对地方市场的深入了解，丰富的行业知识，以及对客户“提供最高标准的专业个性化的销售和物业管理服务”的承诺，悉尼联投物业公司与客户建立了紧密的联系并且获得客户多年信任。', '<p>悉尼联投物业公司由具有远见卓识的Leo 苏先生创立。苏先生自2007年起即从事房地产业。凭借对地方市场的深入了解，丰富的行业知识，以及对客户&ldquo;提供最高标准的专业个性化的销售和物业管理服务&rdquo;的承诺，悉尼联投物业公司与客户建立了紧密的联系并且获得客户多年信任。</p>\r\n\r\n<p>悉尼联投物业公司在悉尼房地产市场表现强劲。得益于苏先生在澳洲和新西兰房地产行业的丰富经验，悉尼联投物业公司不但在两个国家建立了宽广的商业网络，而且对澳洲和海外房地产市场有了独特的认识。</p>\r\n\r\n<p>怀着将公司发展壮大成为符合当前以及未来市场需求的地产服务提供商的决心，悉尼联投物业公司强大并且组织紧密的团队用心倾听买家和卖家的需求，致力于提升客户满意度。</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href="http://demo.uiproperties.com.au/uploads/1395780667_430561_10150640539708358_1872149793_n.jpg" target="_blank"><img alt="test photo" src="http://demo.uiproperties.com.au/uploads/1395780667_430561_10150640539708358_1872149793_n.jpg" style="height:450px; width:600px" /></a></p>\r\n\r\n<ul>\r\n	<li>新南威尔士州地产，证券以及商业经营许可证 号1542273</li>\r\n	<li>新南威尔士州公司执照号1709945</li>\r\n	<li>新西兰房地产中介执照号10054239</li>\r\n</ul>\r\n', '', '', '2014-03-26 07:50:08', '2014-03-26 07:54:00', NULL);
+(1, 1, 2, 1, '主页', '', '<p>悉尼联投物业公司由具有远见卓识的Leo 苏先生创立。苏先生自2007年起即从事房地产业。凭借对地方市场的深入了解，丰富的行业知识，以及对客户&ldquo;提供最高标准的专业个性化的销售和物业管理服务&rdquo;的承诺，悉尼联投物业公司与客户建立了紧密的联系并且获得客户多年信任。</p>\r\n\r\n<p>悉尼联投物业公司在悉尼房地产市场表现强劲。得益于苏先生在澳洲和新西兰房地产行业的丰富经验，悉尼联投物业公司不但在两个国家建立了宽广的商业网络，而且对澳洲和海外房地产市场有了独特的认识。</p>\r\n\r\n<p>怀着将公司发展壮大成为符合当前以及未来市场需求的地产服务提供商的决心，悉尼联投物业公司强大并且组织紧密的团队用心倾听买家和卖家的需求，致力于提升客户满意度。</p>\r\n\r\n<ul>\r\n	<li>新南威尔士州地产，证券以及商业经营许可证 号1542273</li>\r\n	<li>新南威尔士州公司执照号1709945</li>\r\n	<li>新西兰房地产中介执照号10054239</li>\r\n</ul>\r\n', '/img/sydney.jpg,/img/melbourne.jpg,/img/brisbane.jpg,/img/goldcoast.jpg,/img/hobart.jpg,/img/perth.jpg', '', '2014-03-27 11:26:17', '2014-03-28 06:33:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,17 +126,22 @@ CREATE TABLE IF NOT EXISTS `documents` (
   `modified` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- 转存表中的数据 `documents`
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `language_id`, `category_id`, `name`, `summary`, `body`, `cover_img`, `thumbnail`, `is_login_required`, `created`, `modified`, `deleted`) VALUES
-(1, 1, 1, 1, 'Home', 'The visionary behind Sydney United Investments is Mr. Leo Su, who has been serving in real estate industry since 2007. With extensive local knowledge, industry expertise and commitment to provide the highest standard of professional and personalised service in sales and property management, Sydney United Investments has built strong connections with clients and was rewarded with their loyalty over years.  \r\n\r\nSydney United Investments has strong market presence in Sydney. Benefit from Mr. Su’s rich experience in Australia and New Zealand real estate industry, Sydney United Investments not only built up extensive network in both countries but also gained a unique point of view for domestic and oversea property market.\r\n\r\nDetermined to grow a business to match current and future market demands, the strong and close-knit team at Sydney United Investments listens to buyers and sellers’ real estate needs and dedicates to delivering client satisfaction.', '<p>The visionary behind Sydney United Investments is Mr. Leo Su, who has been serving in real estate industry since 2007. With extensive local knowledge, industry expertise and commitment to provide the highest standard of professional and personalised service in sales and property management, Sydney United Investments has built strong connections with clients and was rewarded with their loyalty over years. &nbsp;</p>\r\n\r\n<p>Sydney United Investments has strong market presence in Sydney. Benefit from Mr. Su&rsquo;s rich experience in Australia and New Zealand real estate industry, Sydney United Investments not only built up extensive network in both countries but also gained a unique point of view for domestic and oversea property market.</p>\r\n\r\n<p>Determined to grow a business to match current and future market demands, the strong and close-knit team at Sydney United Investments listens to buyers and sellers&rsquo; real estate needs and dedicates to delivering client satisfaction.</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* NSW&nbsp; Property, Stock and Business License 1542273</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * NSW Corporation License 1709945</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * New Zealand REAA 10054239</p>\r\n\r\n<p>&nbsp;</p>\r\n', '/img/sydney.jpg,/img/melbourne.jpg,/img/brisbane.jpg,/img/goldcoast.jpg,/img/hobart.jpg,/img/perth.jpg', '', 0, '2014-03-16 15:53:57', '2014-03-26 08:50:29', NULL),
-(2, 1, 1, 2, 'Real Estate', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus accumsan rhoncus turpis, id laoreet sapien interdum eu. Fusce aliquam malesuada suscipit. Curabitur porttitor a quam nec pretium. Ut nisl tellus, gravida ac venenatis quis, fringilla at urna. Curabitur et vehicula nulla. Sed consequat velit ligula, a ornare velit accumsan gravida. Maecenas vitae dolor non felis sodales vehicula iaculis sit amet ligula. Nunc convallis eu massa vitae mollis. Aenean sed vulputate risus, sed euismod sapien. Nunc pharetra vitae lacus id hendrerit. Nunc in sem vitae purus sodales sagittis eu eu nulla. Donec faucibus vitae erat eget accumsan. Sed faucibus condimentum nulla condimentum feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ut dui purus. Nullam id viverra nunc. Sed sed turpis tortor. Donec dui mi, gravida ut ipsum et, semper gravida erat. Donec cursus mattis tortor. Pellentesque et suscipit ante. Aenean sed lobortis ipsum, id scelerisque leo. Vestibulum nec erat id nisl tempus dignissim non vel dui. In vestibulum dui eget orci vulputate, vitae vulputate arcu luctus. Nam gravida sagittis tellus interdum blandit. Aenean tristique tempus sollicitudin. Suspendisse tellus quam, facilisis non congue a, pulvinar sit amet odio. Suspendisse egestas elit ac risus congue, et elementum erat dignissim. Donec eu sodales est, nec vulputate lectus. Ut adipiscing congue ultrices. Vestibulum a ultricies justo. Mauris luctus mauris at erat posuere mattis. In at elementum nisi, nec posuere lectus. Quisque et mattis odio. Nulla lobortis posuere massa. Donec interdum enim nec egestas lacinia. Proin lorem augue, vehicula sed dictum ac, accumsan ut eros. Duis lobortis cursus imperdiet. Nulla pellentesque eros in elit vulputate, et varius justo dignissim. In eu elit lectus. Morbi congue odio ut metus molestie, a accumsan nisl pulvinar. Duis porttitor enim at arcu posuere, a dictum nunc mattis. Etiam sodales metus lectus, consectetur volutpat leo iaculis et. Aenean quis justo ornare, accumsan mauris porttitor, dapibus tellus. Duis a blandit sem, eget placerat libero. Nam condimentum purus a risus mattis fermentum. Donec semper aliquam volutpat. Integer metus libero, scelerisque in ultrices a, rhoncus adipiscing est. Integer lacinia blandit nunc a tincidunt. Nam non metus turpis. Etiam ut nulla id tellus accumsan placerat. Ut elementum lectus sit amet euismod interdum. Donec facilisis pulvinar sem ut venenatis.</p>\r\n', '', '', 0, '2014-03-20 07:53:09', '2014-03-25 07:14:49', NULL),
-(3, 1, 1, 2, 'sadfsdfsdfsd', 'sdfsdfsdfsadf', '<p>sadfsdaf</p>\r\n', '', '', 0, '2014-03-25 09:24:19', '2014-03-25 09:24:19', NULL),
-(4, 1, 1, 2, 'Off the Plan', 'The visionary behind Sydney United Investments is Mr. Leo Su, who has been serving in real estate industry since 2007. With extensive local knowledge, industry expertise and commitment to provide the highest standard of professional and personalised service in sales and property management, Sydney United Investments has built strong connections with clients and was rewarded with their loyalty over years.  ', '<p>The visionary behind Sydney United Investments is Mr. Leo Su, who has been serving in real estate industry since 2007. With extensive local knowledge, industry expertise and commitment to provide the highest standard of professional and personalised service in sales and property management, Sydney United Investments has built strong connections with clients and was rewarded with their loyalty over years. &nbsp;</p>\r\n\r\n<p>Sydney United Investments has strong market presence in Sydney. Benefit from Mr. Su&rsquo;s rich experience in Australia and New Zealand real estate industry, Sydney United Investments not only built up extensive network in both countries but also gained a unique point of view for domestic and oversea property market.</p>\r\n\r\n<p>Determined to grow a business to match current and future market demands, the strong and close-knit team at Sydney United Investments listens to buyers and sellers&rsquo; real estate needs and dedicates to delivering client satisfaction.</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* NSW&nbsp; Property, Stock and Business License 1542273</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * NSW Corporation License 1709945</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * New Zealand REAA 10054239</p>\r\n', '', '', 0, '2014-03-26 07:48:09', '2014-03-26 07:48:51', NULL);
+(1, 1, 1, 1, 'Home', '', '<p>The visionary behind Sydney United Investments is Mr. Leo Su, who has been serving in real estate industry since 2007. With extensive local knowledge, industry expertise and commitment to provide the highest standard of professional and personalised service in sales and property management, Sydney United Investments has built strong connections with clients and was rewarded with their loyalty over years. &nbsp;</p>\r\n\r\n<p>Sydney United Investments has strong market presence in Sydney. Benefit from Mr. Su&rsquo;s rich experience in Australia and New Zealand real estate industry, Sydney United Investments not only built up extensive network in both countries but also gained a unique point of view for domestic and oversea property market.</p>\r\n\r\n<p>Determined to grow a business to match current and future market demands, the strong and close-knit team at Sydney United Investments listens to buyers and sellers&rsquo; real estate needs and dedicates to delivering client satisfaction.</p>\r\n\r\n<ul>\r\n	<li>NSW&nbsp; Property, Stock and Business License 1542273</li>\r\n	<li>NSW Corporation License 1709945</li>\r\n	<li>New Zealand REAA 10054239</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '/img/sydney.jpg,/img/melbourne.jpg,/img/brisbane.jpg,/img/goldcoast.jpg,/img/hobart.jpg,/img/perth.jpg', '', 0, '2014-03-27 11:24:42', '2014-03-28 06:33:06', NULL),
+(2, 1, 1, 2, 'Overview', '', '', '', '', 0, '2014-03-28 11:43:36', '2014-03-28 12:34:46', NULL),
+(3, 1, 1, 5, 'Off The Plan', '', '', '', '', 0, '2014-03-28 11:46:27', '2014-03-28 12:06:09', NULL),
+(4, 1, 1, 6, 'Residential', '', '', '', '', 0, '2014-03-28 12:07:29', '2014-03-28 12:07:29', NULL),
+(5, 1, 1, 7, 'Commercial', '', '', '', '', 0, '2014-03-28 12:10:46', '2014-03-28 12:10:46', NULL),
+(6, 1, 1, 8, 'Site', '', '', '', '', 0, '2014-03-28 12:11:03', '2014-03-28 12:11:03', NULL),
+(7, 1, 1, 9, 'Retail', '', '', '', '', 0, '2014-03-28 12:11:29', '2014-03-28 12:11:29', NULL),
+(8, 1, 1, 10, 'Wholesale', '', '', '', '', 0, '2014-03-28 12:11:48', '2014-03-28 12:11:48', NULL),
+(9, 1, 1, 11, 'Franchise', '', '', '', '', 0, '2014-03-28 12:12:07', '2014-03-28 12:12:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -159,16 +162,22 @@ CREATE TABLE IF NOT EXISTS `dynamic_routes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `document_id` (`document_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `dynamic_routes`
 --
 
 INSERT INTO `dynamic_routes` (`id`, `document_id`, `slug`, `spec`, `active`, `created`, `modified`, `deleted`) VALUES
-(1, 1, '/home', '{"plugin":null,"controller":"documents","action":"view","0":"1"}', 1, '2014-03-25 08:12:30', '2014-03-26 08:50:29', NULL),
-(2, NULL, '/real-estate-overview', '{"plugin":null,"controller":"categories","action":"display","0":"2"}', 1, '2014-03-25 08:27:08', '2014-03-25 08:27:08', NULL),
-(3, 4, '/real-estate-off-the-plan', '{"plugin":null,"controller":"documents","action":"view","0":"4"}', 1, '2014-03-26 07:48:51', '2014-03-26 07:48:51', NULL);
+(1, 1, '/home', '{"plugin":null,"controller":"documents","action":"view","0":"1"}', 1, '2014-03-27 11:24:52', '2014-03-28 06:33:06', NULL),
+(2, 2, '/real-estate-overview', '{"plugin":null,"controller":"documents","action":"view","0":"2"}', 1, '2014-03-28 11:43:07', '2014-03-28 12:34:46', NULL),
+(4, NULL, '/real-estate-off-the-plan', '{"plugin":null,"controller":"categories","action":"display","0":"5"}', 1, '2014-03-28 11:45:47', '2014-03-28 11:45:47', NULL),
+(6, NULL, '/real-estate-residential', '{"plugin":null,"controller":"categories","action":"display","0":"6"}', 1, '2014-03-28 12:13:16', '2014-03-28 12:13:26', NULL),
+(7, NULL, '/real-estate-commercial', '{"plugin":null,"controller":"categories","action":"display","0":"7"}', 1, '2014-03-28 12:13:59', '2014-03-28 12:13:59', NULL),
+(8, NULL, '/real-estate-site', '{"plugin":null,"controller":"categories","action":"display","0":"8"}', 1, '2014-03-28 12:16:15', '2014-03-28 12:16:15', NULL),
+(9, NULL, '/business-retail', '{"plugin":null,"controller":"categories","action":"display","0":"9"}', 1, '2014-03-28 12:17:27', '2014-03-28 12:17:27', NULL),
+(10, NULL, '/business-wholesale', '{"plugin":null,"controller":"categories","action":"display","0":"10"}', 1, '2014-03-28 12:17:58', '2014-03-28 12:17:58', NULL),
+(11, NULL, '/business-franchise', '{"plugin":null,"controller":"categories","action":"display","0":"11"}', 1, '2014-03-28 12:18:33', '2014-03-28 12:18:33', NULL);
 
 -- --------------------------------------------------------
 

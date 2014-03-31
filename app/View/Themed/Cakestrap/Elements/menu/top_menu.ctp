@@ -30,9 +30,9 @@
                     <?php endforeach; ?>
                     <li><?php
                         if (AuthComponent::user('id')) {
-                            echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout'));
+                            echo $this->Html->link(__('Logout'), array('plugin' => null, 'controller' => 'users', 'action' => 'logout'));
                         } else {
-                            echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login'));
+                            echo $this->Html->link(__('Login'), array('plugin' => null, 'controller' => 'users', 'action' => 'login'));
                         }
                         ?></li>
                 </ul><!-- /.nav navbar-nav -->

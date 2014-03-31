@@ -49,15 +49,15 @@ class EmailConfig {
 	public $smtp = array(
 		'transport' => 'Smtp',
 		'from' => array('admin@uiproperties.com.au' => 'United Investment Properties'),
-		'host' => 'localhost',
+		'host' => 'smtp.live.com',
 		'port' => 25,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'admin@uiproperties.com.au',
+		'password' => 'Su19831016',
 		'client' => null,
 		'log' => false,
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
 	);
 
 	public $fast = array(
@@ -92,9 +92,16 @@ class EmailConfig {
 	);
 
     public $contactform = array(
-        'transport' => 'Mail',
+        'transport' => 'Smtp',
         'from' => array('admin@uiproperties.com.au' => 'United Investment Properties | Contact Form'),
         'bcc' => 'uip.sydney@uiproperties.com.au',
+        'host' => 'smtp.live.com',
+        'port' => 25,
+        'timeout' => 30,
+        'username' => 'admin@uiproperties.com.au',
+        'password' => 'Su19831016',
+        'client' => null,
+        'log' => false,
         'charset' => 'utf-8',
         'headerCharset' => 'utf-8',
     );
